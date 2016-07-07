@@ -1,4 +1,4 @@
-var controllers = require('../controller/authCtrl.js');
+var controllers = require('../controllers/authCtrl.js');
 var router = require('express').Router();
 
 for (var route in controllers) {

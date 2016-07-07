@@ -1,4 +1,4 @@
-var controllers = require('../controller/toiletCtrl.js');
+var controllers = require('../controllers/toiletCtrl.js');
 var router = require('express').Router();
 
 for (var route in controllers) {

@@ -1,4 +1,4 @@
-var controllers = require('../controller/reviewCtrl.js');
+var controllers = require('../controllers/reviewCtrl.js');
 var router = require('express').Router();
 
 for (var route in controllers) {

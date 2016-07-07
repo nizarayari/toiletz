@@ -1,4 +1,4 @@
-var controllers = require('../controller/userCtrl.js');
+var controllers = require('../controllers/userCtrl.js');
 var router = require('express').Router();
 
 for (var route in controllers) {
