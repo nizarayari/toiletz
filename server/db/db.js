@@ -27,6 +27,7 @@ knex.deleteEverything = function () {
 };
 
 // build schema below
+
 knex.ensureSchema = function () {
   return Promise.all([
     knex.schema.hasTable('users').then(function(exists) {
