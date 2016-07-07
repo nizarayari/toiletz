@@ -1,5 +1,5 @@
 module.exports = {
-  '/signin': {
+  'signin': {
     get: function(req,res) {
       console.log("Received GET at /api/auth/signin");
       res.end("Received GET at /api/auth/signin");
@@ -17,7 +17,7 @@ module.exports = {
       res.end("Received DELETE at /api/auth/signin");
     }
   },
-  '/signup': {
+  'signup': {
     get: function(req,res) {
       console.log("Received GET at /api/auth/signup");
       res.end("Received GET at /api/auth/signup");
