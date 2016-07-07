@@ -1,0 +1,30 @@
+{
+  "name": "toiletz",
+  "version": "1.0.0",
+  "description": "Yelp for Toilets",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinpchen94/toiletz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinpchen94/toiletz/issues"
+  },
+  "homepage": "https://github.com/justinpchen94/toiletz#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "moment": "^2.14.1",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.9.2",
+    "q": "^1.4.1",
+    "request": "^2.72.0"
+  }
+}
