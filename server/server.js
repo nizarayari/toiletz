@@ -4,6 +4,11 @@ var moment = require('moment');
 var app = express();
 var morgan = require('morgan');
 
+var routesReview = require('./routes/routesReview.js');
+var routesUser = require('./routes/routesUser.js');
+var routesTicket = require('./routes/routesToilets.js');
+var routesAuth = require('./routes/routesAuth.js');
+
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
@@ -16,6 +21,12 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version, X-File-Name');
   next();
 });
+
+//Routing
+app.use('/api/review', routesReview);
+app.use('/api/user', routesUser);
+app.use('/api/ticket', routesTicket);
+app.use('/api/auth', routesAuth);
 
 app.set('port', process.env.PORT || 3000);
 
