@@ -26,7 +26,6 @@ knex.deleteEverything = function () {
     });
 };
 
-
 // build schema below
 
 knex.ensureSchema = function () {
