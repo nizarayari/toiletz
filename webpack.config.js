@@ -1,6 +1,6 @@
 module.exports = {
 	  entry: [   // where you render the main APP
-	    './client/components/app.js'
+	    './client/components/index.app.js'
 	  ],
 	  output: {
 	    filename: 'bundle.js',
