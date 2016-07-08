@@ -33,7 +33,9 @@ knex.ensureSchema = function () {
         knex.schema.createTable('users', function (table) {
           table.increments('id').primary();
           table.string('username', 255);
+          table.string('password', 255);
           table.string('email', 255);
+          table.string('salt', 255);
           table.string('gender', 100);
           table.timestamps();
         }).then(function (table) {
