@@ -3,6 +3,11 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var app = express();
 var morgan = require('morgan');
+var dotenv = require('dotenv');
+
+dotenv.load();
+var db = require('./db/db.js');
+
 
 var routesReview = require('./routes/routesReview.js');
 var routesUser = require('./routes/routesUser.js');
@@ -31,5 +36,6 @@ app.use('/api/auth', routesAuth);
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function() {
+  db.ensureSchema();
   console.log(moment().format('h:mm:ss a') + ': Express Server listening on port', app.get('port'));
 });

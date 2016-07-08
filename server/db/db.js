@@ -1,6 +1,4 @@
-var path = require('path');
-
-var config = require('../knexfile.js');
+var config = require('../../knexfile.js');
 var env = process.env.NODE_ENV || 'development';
 var knex = require('knex')(config[env]);
 
@@ -50,7 +48,7 @@ knex.ensureSchema = function () {
           table.increments('id').primary();
           table.string('location', 255);
           table.text('description', 255);
-          table.integer('id_Users').references('users.id');
+          table.integer('id_Users').unsigned().references('id').inTable('users');
           table.timestamps();
         }).then(function (table) {
           console.log('Created toiletz table.');
@@ -65,8 +63,8 @@ knex.ensureSchema = function () {
           table.text('description');
           table.integer('rating');
           table.boolean('recommend');
-          table.integer('id_Users').references('users.id');
-          table.integer('id_Toiletz').references('toiletz.id');
+          table.integer('id_Users').unsigned().references('id').inTable('users');
+          table.integer('id_Toiletz').unsigned().references('id').inTable('toiletz');
         }).then(function (table) {
           console.log('Created reviews table.');
         });
@@ -88,8 +86,8 @@ knex.ensureSchema = function () {
       if (!exists) {
         knex.schema.createTable('toiletz_tags', function (table) {
           table.increments('id').primary();
-          table.integer('id_Toiletz').references('toiletz.id');
-          table.integer('id_Tags').references('tags.id');
+          table.integer('id_Toiletz').unsigned().references('id').inTable('toiletz');
+          table.integer('id_Tags').unsigned().references('id').inTable('tags');
         }).then(function (table) {
           console.log('Created toiletz_tags table.');
         });
@@ -100,8 +98,8 @@ knex.ensureSchema = function () {
       if (!exists) {
         knex.schema.createTable('users_favs', function (table) {
           table.increments('id').primary();
-          table.integer('id_Users').references('users.id');
-          table.integer('id_Toiletz').references('toiletz.id');
+          table.integer('id_Users').unsigned().references('id').inTable('users');
+          table.integer('id_Toiletz').unsigned().references('id').inTable('toiletz');
         }).then(function (table) {
           console.log('Created users_favs table.');
         });

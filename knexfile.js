@@ -5,7 +5,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      filename: path.join(__dirname, './db/toiletz.mysql')
-    }
-  }
+        host     : 'toiletz.justinpchen.com',
+        user     : process.env.db_username,
+        password : process.env.db_password,
+        database : 'toiletz',
+        charset  : 'utf8'
+  }}
 };
