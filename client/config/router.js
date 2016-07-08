@@ -3,7 +3,7 @@ import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import {Router, Route, Link, RouteHandler} from 'react-router';
+import {Router, Route, RouteHandler} from 'react-router';
 
 // COMPONENT
 import IndexApp from '.../components/index.app.js';
