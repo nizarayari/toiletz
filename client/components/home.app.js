@@ -3,11 +3,12 @@ import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import {Router, Route, Link, RouteHandler} from 'react-router';
 
-import ToiletList from '../containers/toilet-list';
+import ToiletList from '../containers/home.toilet-list';
 import reducers from '../reducers';
 
-export default class App extends Component{
+export default class HomeApp extends Component{
 
 	render(){
 
@@ -24,7 +25,7 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
-	<App/>
+	<HomeApp/>
 	</Provider>,
 	document.getElementById('app')
 )
