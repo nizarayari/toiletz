@@ -44,8 +44,6 @@ module.exports = {
               });
           }
         });
-
-      res.end("Received POST at /api/toilet/");
     },
     put: function(req, res) {
       console.log("Received PUT at /api/toilet/");

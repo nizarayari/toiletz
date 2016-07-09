@@ -13,6 +13,7 @@ var routesReview = require('./routes/routesReview.js');
 var routesUser = require('./routes/routesUser.js');
 var routesToilet = require('./routes/routesToilets.js');
 var routesAuth = require('./routes/routesAuth.js');
+var routesTag = require('./routes/routesTag.js');
 
 app.use(bodyParser.json());
 
@@ -32,6 +33,7 @@ app.use('/api/review', routesReview);
 app.use('/api/user', routesUser);
 app.use('/api/toilet', routesToilet);
 app.use('/api/auth', routesAuth);
+app.use('/api/tag', routesTag);
 
 app.set('port', process.env.PORT || 3000);
 
