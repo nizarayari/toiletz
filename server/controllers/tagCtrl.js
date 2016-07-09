@@ -10,7 +10,8 @@ module.exports = {
 
       Tag.findAllTags()
         .then(function(tags) {
-          if (tags.length === 0) {
+          console.log(tags);
+          if (!tags || tags.length === 0) {
             console.log("no tags exist yet");
             res.end("no tags exist yet");
           } else {
@@ -18,7 +19,7 @@ module.exports = {
             res.send(tags);
           }
         });
-      res.end("Received GET at /api/tag/");
+      res.send("Received GET at /api/tag/");
     },
     post: function(req, res) {
       console.log("Received POST at /api/tag/");
@@ -28,7 +29,7 @@ module.exports = {
         .then(function(tag) {
           if (toilet) {
             console.log("tag already added"); 
-            res.end("tag already added"); 
+            res.send("tag already added"); 
           } else {
             console.log("tag does not exist");
 
@@ -36,11 +37,10 @@ module.exports = {
               .then(function(result) {
                 console.log("result", result);
 
-                res.end(result);
+                res.send(result);
               });
           }
         });
-      res.end("Received POST at /api/tag/");
     },
     put: function(req, res) {
       console.log("Received PUT at /api/tag/");
@@ -54,6 +54,9 @@ module.exports = {
   ':tagId': {
     get: function(req,res) {
       console.log("Received GET at /api/:tagId");
+
+      var tagID = url.parse(req.url,true).path.slice(1);
+
       res.end("Received GET at /api/:tagId");
     },
     post: function(req, res) {
