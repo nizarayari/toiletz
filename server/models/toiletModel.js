@@ -9,6 +9,13 @@ Toilet.findToiletById = function(id) {
     });
 };
 
+Toilet.findAllToilets = function() {
+  return db('toiletz')
+    .then(function (rows) {
+      return rows;
+    });
+};
+
 Toilet.findToiletByLocation = function(location) {
   return db('toiletz').where({ location: location }).limit(1)
     .then(function (rows) {
