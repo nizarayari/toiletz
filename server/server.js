@@ -11,7 +11,7 @@ var db = require('./db/db.js');
 
 var routesReview = require('./routes/routesReview.js');
 var routesUser = require('./routes/routesUser.js');
-var routesTicket = require('./routes/routesToilets.js');
+var routesToilet = require('./routes/routesToilets.js');
 var routesAuth = require('./routes/routesAuth.js');
 
 app.use(bodyParser.json());
@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
 //Routing
 app.use('/api/review', routesReview);
 app.use('/api/user', routesUser);
-app.use('/api/ticket', routesTicket);
+app.use('/api/toilet', routesToilet);
 app.use('/api/auth', routesAuth);
 
 app.set('port', process.env.PORT || 3000);
