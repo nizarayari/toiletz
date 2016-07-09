@@ -6,7 +6,7 @@ module.exports = {
   '/': {
     get: function(req,res) {
       console.log("Received GET at /api/toilet/");
-      console.log("getting all toilets")
+      console.log("getting all toilets");
 
       Toilet.findAllToilets()
         .then(function(toilets) {
