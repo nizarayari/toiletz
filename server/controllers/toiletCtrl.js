@@ -1,23 +1,32 @@
 var Toilet = require('../models/toiletModel.js');
 var User = require('../models/userModel.js');
+var url = require('url');
 
 module.exports = {
   '/': {
     get: function(req,res) {
       console.log("Received GET at /api/toilet/");
-      res.end("Received GET at /api/toilet/");
+      console.log("getting all toilets")
+
+      Toilet.findAllToilets()
+        .then(function(toilets) {
+          if (toilets.length === 0) {
+            console.log("no toilets exist yet");
+            res.end("no toilets exist yet");
+          } else {
+            console.log("toilets exist");
+            res.send(toilets);
+          }
+        });
     },
     post: function(req, res) {
       console.log("Received POST at /api/toilet/");
       console.log("creating toilet");
 
-      //need user id as an input
-
       var newToilet = {
-        description: "a new toilet",
-        id_Users: 15,
-        location: 'santa monica'
-
+        description: req.body.description,
+        id_Users: req.body.id_Users,
+        location: req.body.location
       };
 
       Toilet.findToiletByLocation(newToilet.location)
@@ -50,7 +59,19 @@ module.exports = {
   ':toiletId': {
     get: function(req,res) {
       console.log("Received GET at /api/toilet/:toiletId");
-      res.end("Received GET at /api/toilet/:toiletId");
+
+      var toiletID = url.parse(req.url,true).path.slice(1);
+
+      Toilet.findToiletById(toiletID)
+        .then(function(toilet) {
+          if (toilet) {
+            console.log("toilet", toiletID, "was found, returning");
+            res.send(toilet);
+          } else {
+            console.log("toilet", toiletID, "was not found");
+            res.end("toilet " + toiletID + " was not found");
+          }
+        });
     },
     post: function(req, res) {
       console.log("Received POST at /api/toilet/:toiletId");
