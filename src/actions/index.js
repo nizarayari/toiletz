@@ -1,17 +1,20 @@
 import axios from 'axios';
 
 //grabs from server
-const ROOT_URL = 'root url'
+//const ROOT_URL = 'localhost://3000'
 const API_KEY = 'key';
+export const FETCH_TOILETZ = 'FETCH_TOILETZ'
 
 //const request = axios.get('{$ROOT_URL}/endpoint${API_KEY}');
 
 
-export function search(endpoint) {
-	const request = axios.get('api/review/user/15');
+export function search(city,radius) {
+	const url = '/api/toilet'
+	const request = axios.get(url)
+	//console.log(request,"inside axios")
 
 	return {
-		type: 'FETCH_TOILETZ',
+		type: FETCH_TOILETZ,
 		payload: request
 	};
 

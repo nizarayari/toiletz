@@ -1,23 +1,13 @@
-export default function(){
+import { FETCH_TOILETZ } from '../actions/index'
 
-return [
-	{name:"toilet1",
-	 address: "604 Arizona avenue",
-	 time:"until 10PM",
-	 lat:34.016484,
-	 lng:-118.496216	
-	},
-	{name:"toilet2",
-	 address: "404 Santa Monica avenue",
-	 time:"until 9PM",
-	 lat:34.020440,
-	 lng:-118.494297
-	},
-	{name:"toilet3",
-	 address: "1453 Broadway avenue",
-	 time:"until 8PM",
-	 lat:34.027800,
-	 lng:-118.486516
+export default function(state=null,action){
+	console.log("Show me my data",action);
+	switch (action.type){
+		case FETCH_TOILETZ:
+		console.log(action.payload.data,"inside switch")
+		return action.payload.data
 	}
-];
+	
+	return state
+ 
 }

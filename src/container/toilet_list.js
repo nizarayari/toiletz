@@ -5,7 +5,10 @@ import { SelectToilet } from '../actions/index';
 
 class ToiletList extends Component{
 
+	
 	renderList(){
+		
+		
 		return this.props.toilets.map((toilet, index) => {
 			return (
 				
@@ -13,14 +16,19 @@ class ToiletList extends Component{
 				onClick={()=> this.props.selectToilet(toilet)}
 				style={{cursor:'pointer'}}
 				key={index}>
-				{toilet.name}
+				{toilet.description}
 				</li>
 				
 			)
 		});
+	
 	}
 
 	render (){
+		if(!this.props.toilets){
+      		return null;
+    	}
+   
 		return (
 				<ul> {this.renderList()}</ul>
 			)
