@@ -5,18 +5,16 @@ import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
 import {connect} from 'react-redux';
 
-const coords = {
-  lat: 34.020440,
-  lng: -118.494297
-};
 
 const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
 export default class SimpleMap extends Component{
+
   constructor(props) {
     super(props);
     this.state = { hide: true };
   }
+
 
   onMapCreated(map) {
     map.setOptions({
@@ -56,19 +54,22 @@ export default class SimpleMap extends Component{
   }
   
   onComponentDidMount() {
-
-
-
-            this.props.toilets.map((toilet, index) => {
-              var obj = {};
-              obj['marker' + index] = false;
-              this.setState(obj);
-            });
-            this.setState({hide: false})
+    this.props.toilets.map((toilet, index) => {
+      var obj = {};
+      obj['marker' + index] = false;
+      this.setState(obj);
+      });
+      this.setState({hide: false})
   }
   
 
   render() {
+
+    if(!this.props.toilets){
+      return null;
+    }
+
+
     return (
       <Gmaps
         width={'1200px'}
@@ -84,9 +85,9 @@ export default class SimpleMap extends Component{
               return (
                 <Marker
                   key={index}
-                  lat={toilet.lat}
-                  lng={toilet.lng}
-                  title={toilet.name}
+                  lat={toilet.latitude}
+                  lng={toilet.longitude}
+                  title={toilet.description}
                   draggable={false}
                   icon = {image}
                   onClick={this.onClick.bind(this, index)}
@@ -102,9 +103,9 @@ export default class SimpleMap extends Component{
                 <InfoWindow
                 className='testing'
                 key={index}
-                  lat={toilet.lat}
-                  lng={toilet.lng}
-                  content={toilet.name+"\n"+toilet.address}
+                  lat={toilet.latitude}
+                  lng={toilet.longitude}
+                  content={toilet.description+"\n"+toilet.description}
                   onCloseClick={this.onCloseClick.bind(this, index)} />
               )
             }})}

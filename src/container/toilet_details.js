@@ -12,8 +12,8 @@ class ToiletDetail extends Component{
 		return (
 			<div>
 				<h3>Details for:</h3>
-				<div>{this.props.toilet.name}</div>
-				<div>{this.props.toilet.address}</div>
+				<div>{this.props.toilet.description}</div>
+				<div>{this.props.toilet.description}</div>
 			</div>
 		);
 	}
