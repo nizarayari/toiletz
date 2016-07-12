@@ -48,7 +48,7 @@ knex.ensureSchema = function () {
       if (!exists) {
         knex.schema.createTable('toiletz', function (table) {
           table.increments('id').primary();
-          // table.string('location', 255);
+          table.string('name', 255);
           table.float('latitude', 8);
           table.float('longitude', 8);
           table.text('description', 255);
