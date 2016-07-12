@@ -7,7 +7,6 @@ export const FETCH_TOILETZ = 'FETCH_TOILETZ'
 
 //const request = axios.get('{$ROOT_URL}/endpoint${API_KEY}');
 
-
 export function search(endpoint) {
 	const request = axios.get('./api/toilet//');
 

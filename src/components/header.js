@@ -1,7 +1,6 @@
-import React from 'react';
 import SearchBar from './search';
-import { Component } from 'react';
 import { Link } from 'react-router';
+import React, { Component } from 'react';
 
 
 
@@ -11,9 +10,23 @@ export default class Header extends Component{
 
 		return(
 			<div>
-				<SearchBar />
-				<Login />
-				<Signup />
+				<ul>
+					<li><SearchBar /></li>
+					<li>
+						<Link to={'sign_in'}>
+							<span>
+								<button>Sign In</button>
+							</span>
+						</Link>
+					</li>
+					<li>
+						<Link to={'sign_up'}>
+							<span>
+								<button>Sign Up</button>
+							</span>
+						</Link>
+					</li>
+				</ul>
 			</div>
 		);
 
