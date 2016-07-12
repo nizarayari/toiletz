@@ -51,7 +51,7 @@ module.exports = {
       res.end("Received DELETE at /api/tag/");
     }
   },
-  ':tagId': {
+  '/:tagId': {
     get: function(req,res) {
       console.log("Received GET at /api/:tagId");
 

@@ -54,7 +54,7 @@ module.exports = {
       res.end("Received DELETE at /api/toilet/");
     }
   },
-  ':toiletId': {
+  '/:toiletId': {
     get: function(req,res) {
       console.log("Received GET at /api/toilet/:toiletId");
 
