@@ -29,8 +29,8 @@ class SignUp extends Component {
     render() {
 	    return (
 	    	<div id='signup'>
-  				<h1>signin</h1>
-  				<form name="signinForm" >
+  				<h1>Sign Up</h1>
+  				<form name="signupForm" >
     				<input 
     					type='text'
     					placeholder="type your username"
@@ -43,10 +43,10 @@ class SignUp extends Component {
 		      			value={this.state.pwd}
 		      			onChange={(event)=> this.setState({ pwd: event.target.value })}
     				/>
-    				<button onClick={this.onFormSubmit} type='submit' >signin</button>
+    				<button onClick={this.onFormSubmit} type='submit' >Sign Up</button>
  				 </form>
- 				<Link to={'sign_in'}>
-  				<a href="">Don't have an account? <strong>Signup</strong> ...</a>
+ 				<Link to={'sign_up'}>
+  				<a href="">Already have an account? <strong>Sign In</strong> ...</a>
   				</Link>
 			</div>
 	    );
