@@ -50,7 +50,7 @@ module.exports = {
       res.end("Received DELETE at /api/review");
     }
   },
-  'toilet/:toiletId': {
+  '/toilet/:toiletId': {
     get: function(req,res) {
       console.log("Received GET at /api/review/toilet/:reviewId");
       console.log("getting all reviews for a toilet");
@@ -83,7 +83,7 @@ module.exports = {
       res.end("Received DELETE at /api/:reviewId");
     }
   },
-  'user/:userId': {
+  '/user/:userId': {
     get: function(req,res) {
       console.log("Received GET at /api/review/toilet/:reviewId");
       console.log("getting all reviews for a toilet by a user");
@@ -117,7 +117,7 @@ module.exports = {
       res.end("Received DELETE at /api/:reviewId");
     }
   },
-  ':reviewId': {
+  '/:reviewId': {
     get: function(req,res) {
       console.log("Received GET at /api/:reviewId");
 
