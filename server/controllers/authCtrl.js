@@ -53,7 +53,7 @@ module.exports = {
     post: function(req, res) {
       console.log("Received POST at /api/auth/signup");
       
-      var email = 'examples@email.com';
+      var email = 'examplasdfs@email.com';
 
       User.findUserByEmail(email)
         .then(function(user) {      
@@ -63,9 +63,9 @@ module.exports = {
           } else {
             console.log("user does not exist");
             User.createUser({
-              username: 'test',
+              username: 'test2',
               password: 'password',
-              email: 'examples@email.com',
+              email: 'notanemail@email.com',
               gender: 'male'
             }).then(function(result) {
               console.log("result", result);

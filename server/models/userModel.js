@@ -25,6 +25,7 @@ User.findUserByEmail = function(email) {
 };
 
 User.createUser = function(attr) {
+  console.log("creating user");
   return new Promise(function(resolve, reject) {
     return hashPassword(attr.password)
       .then(function(hashObj) {
@@ -32,10 +33,13 @@ User.createUser = function(attr) {
         attr.salt = hashObj.salt;
       })
       .then(function(){
+        console.log("password hashed");
+        console.log("this is the pre inserted attr", attr);
         return db('users').insert(attr)
           .then(function(result) {
             attr.id = result[0];
             delete attr.password;
+            console.log("returned attr", attr);
             resolve(attr);
           });    
       });
