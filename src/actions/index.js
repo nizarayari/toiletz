@@ -8,10 +8,8 @@ export const FETCH_TOILETZ = 'FETCH_TOILETZ'
 //const request = axios.get('{$ROOT_URL}/endpoint${API_KEY}');
 
 
-export function search(city,radius) {
-	const url = '/api/toilet'
-	const request = axios.get(url)
-	//console.log(request,"inside axios")
+export function search(endpoint) {
+	const request = axios.get('./api/toilet//');
 
 	return {
 		type: FETCH_TOILETZ,
@@ -31,3 +29,18 @@ export function SelectToilet (toilet){
 
 	};
 }
+
+// export function search(url) {
+// 	return function(dispatch) {
+// 		//dispatch(requestData());
+// 		return axios.get('api/toilet')
+// 			.then(function(response) {
+// 				console.log(response);
+// 				//dispatch(receiveData(response.data));
+// 			})
+// 			.catch(function(response){
+// 				// dispatch(receiveError(response.data));
+// 				// dispatch(pushState(null,'/error'));
+// 			})
+// 	}
+// }
