@@ -28,13 +28,12 @@ class SignUp extends Component {
 
     render() {
 	    return (
-
+	    <div className="top-margin">
 			<div className="container">
 			  <div className="row">
 			  	<div className="col-md-6">
 			          <form className="form-horizontal" method="POST">
 			          	<fieldset>
-
 				            <div id="legend">
 				              <legend className="">Sign Up</legend>
 				            </div>
@@ -45,7 +44,7 @@ class SignUp extends Component {
 				                <input 
 				                	className="form-control input-lg"
 			    					type='text'
-			    					placeholder="type your username"
+			    					placeholder="Type your username"
 					      			value={this.state.name}
 					      			onChange={(event)=> this.setState({ name: event.target.value })}
 					      		/>
@@ -56,7 +55,7 @@ class SignUp extends Component {
 				            <div className="control-group">
 				              <label className="control-label">E-mail</label>
 				              <div className="controls">
-				               <input type="email" id="email" name="email" placeholder="" className="form-control input-lg"></input>
+				               <input type="email" id="email" name="email" placeholder="Type your email" className="form-control input-lg"></input>
 				                <p className="help-block">Please provide your E-mail</p>
 				              </div>
 				            </div>
@@ -85,6 +84,7 @@ class SignUp extends Component {
 			    </div> 
 			  </div>
 			</div>
+		</div>
 	    );
     };
 };

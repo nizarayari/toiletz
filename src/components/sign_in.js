@@ -29,13 +29,12 @@ class SignIn extends Component {
     render() {
 
 	    return (
-
+	    <div className="top-margin">
 			<div className="container">
 			  <div className="row">
 			  	<div className="col-md-6">
 			          <form className="form-horizontal" method="POST">
 			          	<fieldset>
-
 				            <div id="legend">
 				              <legend className="">Sign In</legend>
 				            </div>
@@ -46,7 +45,7 @@ class SignIn extends Component {
 				                <input 
 				                	className="form-control input-lg"
 			    					type='text'
-			    					placeholder="type your username"
+			    					placeholder="Type your username"
 					      			value={this.state.name}
 					      			onChange={(event)=> this.setState({ name: event.target.value })}
 					      		/>
@@ -77,6 +76,7 @@ class SignIn extends Component {
 			    </div> 
 			  </div>
 			</div>
+		</div>
 	    );
     };
 };

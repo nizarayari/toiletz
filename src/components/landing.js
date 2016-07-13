@@ -6,6 +6,7 @@ export default class Index extends Component{
 	render(){
 
 		return(
+		<div className="intro-background-img">
 			<div className="intro-header">
 		        <div className="container">
 		            <div className="row">
@@ -25,8 +26,7 @@ export default class Index extends Component{
 		            </div>
 		        </div>
 		    </div>
-
-
+		</div>
 		);
 
 	}
