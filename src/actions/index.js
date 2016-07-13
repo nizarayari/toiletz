@@ -3,7 +3,7 @@ import axios from 'axios';
 //grabs from server
 //const ROOT_URL = 'localhost://3000'
 const API_KEY = 'key';
-export const FETCH_TOILETZ = 'FETCH_TOILETZ'
+export const FETCH_TOILETZ = 'FETCH_TOILETZ';
 
 //const request = axios.get('{$ROOT_URL}/endpoint${API_KEY}');
 
@@ -17,7 +17,7 @@ export function search(endpoint) {
 
 }
 
-export function SelectToilet (toilet){
+export function SelectToilet(toilet){
 	//SelectToilet is an ActionCreator, it needs to return an action,
 	// an object with a type property.
 
