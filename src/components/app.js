@@ -7,7 +7,9 @@ export default class App extends Component {
     return (
       <div>
 		      <Header />
-		      {this.props.children}
+		      <div className="app-style">
+		     	 {this.props.children}	
+		      </div>
 		      <Footer />
       </div>
     );

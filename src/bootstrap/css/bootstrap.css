@@ -3385,12 +3385,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
-  max-height: 340px;
+  max-height: 60px;
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
   .navbar-fixed-bottom .navbar-collapse {
-    max-height: 200px;
+    max-height: 60px;
   }
 }
 .container > .navbar-header,
@@ -5206,6 +5206,9 @@ button.list-group-item-danger.active:focus {
 .visible-lg-inline,
 .visible-lg-inline-block {
   display: none !important;
+}
+.app-style {
+  margin-top: 10%;
 }
 @media (max-width: 767px) {
   .visible-xs {

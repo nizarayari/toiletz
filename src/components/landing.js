@@ -8,7 +8,6 @@ export default class Index extends Component{
 		return(
 			<div className="intro-header">
 		        <div className="container">
-
 		            <div className="row">
 		                <div className="col-lg-12">
 		                    <div className="intro-message">
@@ -26,6 +25,8 @@ export default class Index extends Component{
 		            </div>
 		        </div>
 		    </div>
+
+
 		);
 
 	}
