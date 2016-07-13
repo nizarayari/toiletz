@@ -28,6 +28,7 @@ class SignUp extends Component {
 
     render() {
 	    return (
+
 			<div className="container">
 			  <div className="row">
 			  	<div className="col-md-6">
@@ -74,20 +75,6 @@ class SignUp extends Component {
 				              </div>
 				            </div>
 				         
-				            <div className="control-group">
-				              <label className="control-label">Password (Confirm)</label>
-				              <div className="controls">
-				                <input 
-				                	className="form-control input-lg"
-			    					type="password" 
-			    					placeholder="Type your password"
-					      			value={this.state.pwd}
-					      			onChange={(event)=> this.setState({ pwd: event.target.value })}
-			    				/>
-				                <p className="help-block">Please confirm password</p>
-				              </div>
-				            </div>
-
 				            <div className="control-group">
 				              <div className="controls">
 				                <button className="btn btn-success" onClick={this.onFormSubmit} type="submit">Sign Up</button>

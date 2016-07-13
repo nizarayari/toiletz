@@ -7,7 +7,7 @@ export default class Footer extends Component{
 	render(){
 
 		return(
-			 <footer className="footer">
+			 <footer className="navbar-default navbar-fixed-bottom">
 		        <div className="container">
 		            <div className="row">
 		                <div className="col-lg-12">

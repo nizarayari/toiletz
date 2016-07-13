@@ -27,25 +27,55 @@ class SignIn extends Component {
 	}
 
     render() {
+
 	    return (
-	    	<div id='signin'>
-  				<h1>Sign In</h1>
-  				<form name="signinForm" >
-    				<input 
-    					type='text'
-    					placeholder="type your username"
-		      			value={this.state.name}
-		      			onChange={(event)=> this.setState({ name: event.target.value })}
-		      		/>
-    				<input 
-    					type="password" 
-    					placeholder="Type your password"
-		      			value={this.state.pwd}
-		      			onChange={(event)=> this.setState({ pwd: event.target.value })}
-    				/>
-    				<button onClick={this.onFormSubmit} type='submit' >Sign In</button>
- 				 </form>
- 				<p>Don't have an account?<Link to={'sign_up'}><strong>Sign Up</strong></Link></p>
+
+			<div className="container">
+			  <div className="row">
+			  	<div className="col-md-6">
+			          <form className="form-horizontal" method="POST">
+			          	<fieldset>
+
+				            <div id="legend">
+				              <legend className="">Sign In</legend>
+				            </div>
+
+				            <div className="control-group">
+				              <label className="control-label">Username</label>
+				              <div className="controls">
+				                <input 
+				                	className="form-control input-lg"
+			    					type='text'
+			    					placeholder="type your username"
+					      			value={this.state.name}
+					      			onChange={(event)=> this.setState({ name: event.target.value })}
+					      		/>
+				              </div>
+				            </div>
+				         
+				            <div className="control-group">
+				              <label className="control-label">Password</label>
+				              <div className="controls">
+				                <input 
+				                	className="form-control input-lg"
+			    					type="password" 
+			    					placeholder="Type your password"
+					      			value={this.state.pwd}
+					      			onChange={(event)=> this.setState({ pwd: event.target.value })}
+			    				/>
+				              </div>
+				            </div>
+
+				            <div className="control-group">
+				              <div className="controls">
+				              	<p>Don't have an account?<Link to={'sign_up'}><strong>Sign Up</strong></Link></p>
+				                <button className="btn btn-success" onClick={this.onFormSubmit} type="submit">Login</button>
+				              </div>
+				            </div>
+			         	</fieldset>
+			        </form>
+			    </div> 
+			  </div>
 			</div>
 	    );
     };
