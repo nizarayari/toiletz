@@ -22,15 +22,19 @@ class SearchBar extends Component {
 
     render() {
 	    return (
-	      <form >
+	      <form className="navbar-form navbar-center" role="search">
+	     	 <div className="form-group">
 		      <input 
+		      	type="text" 
+		      	className="form-control"
 		      	placeholder="Find a Toilet!"
 		      	value={this.state.term}
 		      	onChange={(event)=> this.setState({ term: event.target.value })}
 		      />
+		     </div>
 		      <Link to={'home'}>
 			      <span>
-			      	<button className="btn-primary" onClick={this.onFormSubmit} type='submit'>Submit</button>
+			      	<button type="submit" className="btn btn-default" onClick={this.onFormSubmit}>Submit</button>
 			      </span>
 		      </Link>
 	      </form>
