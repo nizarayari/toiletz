@@ -45,9 +45,7 @@ class SignIn extends Component {
     				/>
     				<button onClick={this.onFormSubmit} type='submit' >Sign In</button>
  				 </form>
- 				<Link to={'sign_up'}>
-  				<a href="">Don't have an account? <strong>Sign Up</strong> ...</a>
-  				</Link>
+ 				<p>Don't have an account?<Link to={'sign_up'}><strong>Sign Up</strong></Link></p>
 			</div>
 	    );
     };

@@ -30,7 +30,7 @@ class SearchBar extends Component {
 		      />
 		      <Link to={'home'}>
 			      <span>
-			      	<button onClick={this.onFormSubmit} type='submit'>Submit</button>
+			      	<button className="btn-primary" onClick={this.onFormSubmit} type='submit'>Submit</button>
 			      </span>
 		      </Link>
 	      </form>
