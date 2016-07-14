@@ -10,8 +10,13 @@ module.exports = {
     post: function(req, res) {
       console.log("Received POST at /api/auth/signin");
 
-      var password = 'password';
-      var email = 'examples@email.com';
+      // test usage
+      // var password = 'password';
+      // var email = 'examples@email.com';
+      
+      var password = req.body.password;
+      var email = req.body.email;
+      
       User.findUserByEmail(email)
         .then(function(user) {
           if (user) {
@@ -53,26 +58,36 @@ module.exports = {
     post: function(req, res) {
       console.log("Received POST at /api/auth/signup");
       
-      var email = 'examplasdfs@email.com';
+      var newAccount = {
+        username: 'test2',
+        password: 'password',
+        email: 'notanemail@email.com',
+        gender: 'male'
+      };
 
-      User.findUserByEmail(email)
+      // test usage
+      // var newAccount = {
+      //   username: 'test3',
+      //   password: 'password',
+      //   email: 'notanemaiasdfl@email.com',
+      //   gender: 'male'
+      // };
+
+
+      User.findUserByEmail(newAccount.email)
         .then(function(user) {      
           if (user) {
             console.log("user exists");
             res.end("Cannot create user; user already exists");
           } else {
             console.log("user does not exist");
-            User.createUser({
-              username: 'test2',
-              password: 'password',
-              email: 'notanemail@email.com',
-              gender: 'male'
-            }).then(function(result) {
-              console.log("result", result);
+            User.createUser(newAccount)
+              .then(function(result) {
+                console.log("result", result);
 
-              //do session id/jwt stuff
-              res.end("Received POST at /api/auth/signup");
-            });
+                //do session id/jwt stuff
+                res.end("Created user account for: " + newAccount.username);
+              });
           }
 
         });

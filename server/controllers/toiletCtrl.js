@@ -26,7 +26,8 @@ module.exports = {
       var newToilet = {
         description: req.body.description,
         id_Users: req.body.id_Users,
-        location: req.body.location
+        latitude: req.body.location,
+        longitude: req.body.location
       };
 
       Toilet.findToiletByLocation(newToilet.location)
