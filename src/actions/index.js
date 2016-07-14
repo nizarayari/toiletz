@@ -75,6 +75,15 @@ export function SelectToilet(toilet){
 export function createToilet(props) {
 	const request = axios.post('./api/toilet//',props);
 
+	let params = {
+'name': 'Venice beach',
+'description': 'public Restroom',
+'id_Users': '2358',
+'latitude': '33.985927',
+'longitude': '-118.472789',
+'address': '1800 Ocean Front Walk, Los Angeles, CA 90291'
+}
+
 	return {
 		type: CREATE_TOILET,
 		payload: request
