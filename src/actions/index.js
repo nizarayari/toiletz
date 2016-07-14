@@ -29,7 +29,11 @@ export function search(endpoint) {
 			
 		})
 		.catch(function(response) {
-			console.log(response, "ERROR INSIDE FIRST THEN IN SEARCH IN ACTIONS");
+			console.log("ENTER A VALID LOCATION")
+			return {
+						type: FETCH_TOILETZ,
+						payload: "ENTER A VALID LOCATION"
+					};	 
 		})
 }
 

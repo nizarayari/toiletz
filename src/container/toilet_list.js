@@ -7,7 +7,15 @@ class ToiletList extends Component{
 
 	
 	renderList(){
-		
+		console.log("inside renderList", this.props.toilets)
+		if(typeof this.props.toilets === "string"){
+			console.log("inside if")
+			return (
+				 	<div>
+        				<h3>{this.props.toilets}</h3>
+        			</div>
+			)
+	}
 		
 		return this.props.toilets.map((toilet, index) => {
 			return (
