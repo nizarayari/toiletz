@@ -16,8 +16,8 @@ Toilet.findAllToilets = function() {
     });
 };
 
-Toilet.findToiletByLocation = function(location) {
-  return db('toiletz').where({ location: location }).limit(1)
+Toilet.findToiletByLocation = function(latitude, longitude) {
+  return db('toiletz').where({ latitude: latitude, longitude: longitude }).limit(1)
     .then(function (rows) {
       return rows[0];
     });

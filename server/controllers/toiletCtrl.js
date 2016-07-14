@@ -24,12 +24,15 @@ module.exports = {
       console.log("creating toilet");
 
       var newToilet = {
+        name: req.body.name,
         description: req.body.description,
         id_Users: req.body.id_Users,
-        location: req.body.location
+        latitude: req.body.location,
+        longitude: req.body.location,
+        address: req.body.address
       };
 
-      Toilet.findToiletByLocation(newToilet.location)
+      Toilet.findToiletByLocation(newToilet.latitude, newToilet.longitude)
         .then(function(toilet) {
           if (toilet) {
             console.log("toilet already added"); 
