@@ -69,6 +69,16 @@ export default class SimpleMap extends Component{
       return null;
     }
 
+    console.log("Gmap", this.props.toilets)
+    if(typeof this.props.toilets === "string"){
+      console.log("inside if")
+      return (
+        <div>
+        <h3>{this.props.toilets}</h3>
+        </div>
+      )
+    }
+
 
     return (
       <Gmaps
