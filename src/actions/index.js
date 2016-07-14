@@ -15,22 +15,18 @@ export const CREATE_TOILET = 'CREATE_TOILET';
 export function search(endpoint) {
 	return convertAddress(endpoint)
 		.then(function(payload) {
+			
 			let params = querystring.stringify({
 	            latitude: payload.data.latitude,
 			    longitude: payload.data.longitude,
 			    address: payload.data.address
 			});
-			axios.get('./api/toilet/', params)
-				.then(function(payload) {
-					console.log(payload);
+			const request = axios.get('./api/toilet/', params)
 					return {
 						type: FETCH_TOILETZ,
-						payload: payload
+						payload: request
 					};
-				})
-				.catch(function(response) {
-					console.log(response, "ERROR INSIDE SECOND THEN IN SEARCH IN ACTIONS");
-				})
+			
 		})
 		.catch(function(response) {
 			console.log(response, "ERROR INSIDE FIRST THEN IN SEARCH IN ACTIONS");
@@ -43,7 +39,7 @@ export function convertAddress(address) {
 	let coords;
 	resolve(axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + API_KEY)
 		.then(function(payload) {
-			console.log(payload, "PAYLOAD (GOOGLE API) IN ACTIONS, CONVERTADDRESS");
+			//console.log(payload, "PAYLOAD (GOOGLE API) IN ACTIONS, CONVERTADDRESS");
 			response = payload.data.results[0].geometry.location;
 			coords = { 
 				latitude: response.lat,

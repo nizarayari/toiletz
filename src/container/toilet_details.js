@@ -13,15 +13,6 @@ class ToiletDetail extends Component{
 			<div>
 				<h3>Details for:</h3>
 				<div>{this.props.toilet.description}</div>
-
-				<div>{this.props.toilet.reviews.map((review, index) => {
-					return (
-							<li>{review}</li>
-							)
-						}
-					)
-				}
-				</div>
 			</div>
 		);
 	}
@@ -40,3 +31,12 @@ export default connect (mapStateToProps)(ToiletDetail);
 //rating
 //name
 //address
+
+//<div>{this.props.toilet.reviews.map((review, index) => {
+//					return (
+//							<li>{review}</li>
+//							)
+//						}
+//					)
+//				}
+//				</div>
