@@ -33,6 +33,13 @@ export default class Header extends Component{
 								</span>
 							</Link>
 						</span>
+						<span>
+							<Link to={'toiletz_new'}>
+								<span>
+									<button className="btn btn-default">Add Toilet</button>
+								</span>
+							</Link>
+						</span>
 				      </div>
 			      	</div>
 			    </div>
