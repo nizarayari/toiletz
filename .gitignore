@@ -2,6 +2,7 @@
 bundle.js
 npm-debug.log
 server/.DS_Store
+/src/env-google
 .env
 .config
 
