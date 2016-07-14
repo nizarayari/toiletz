@@ -1,47 +1,39 @@
 import axios from 'axios';
-import apikey from '../env-google';
+//import Key from '../env-google';     remove comment after changing env-google-sample to env-google
 import querystring from 'querystring';
 
 //grabs from server
 //const ROOT_URL = 'localhost://3000'
-const API_KEY = "PLACE YOUR API KEY HERE";
+const API_KEY = "AIzaSyAUpKh2acbg-j_j4aRr-DGjeF7NXwCK_J4";    //This will be imported from env-google but it's not working now so just put your key here and remove before push
+
+export const FETCH_USER = 'FETCH_USER';
+export const FETCH_TOILET = 'FETCH_TOILET';
 export const FETCH_TOILETZ = 'FETCH_TOILETZ';
 export const SELECT_TOILETZ = 'SELECT_TOILETZ';
-//const request = axios.get('{$ROOT_URL}/endpoint${API_KEY}');
 
 export function search(endpoint) {
 	return convertAddress(endpoint)
 		.then(function(payload) {
-			if(payload.error){
-				console.log(payload.status, "ERROR INSIDE ACTIONS, IN SEARCH");
-				console.log(payload.statusText, "ERROR INSIDE ACTIONS, IN SEARCH");
-			}
-			console.log(payload, "INSIDE SEARCH");
-			axios.get('./api/toilet/',
-				querystring.stringify({
-			            latitude: payload.latitude,
-					    longitude: payload.longitude,
-					    address: payload.address
-			    }), {
-			      headers: { 
-			        "Content-Type": "application/x-www-form-urlencoded"
-			      }
-			    })
+			let params = querystring.stringify({
+	            latitude: payload.data.latitude,
+			    longitude: payload.data.longitude,
+			    address: payload.data.address
+			});
+			axios.get('./api/toilet/', params)
 				.then(function(payload) {
-					if(payload.error) {
-						console.log(payload.status, "ERROR INSIDE ACTIONS, IN SEARCH");
-						console.log(payload.statusText, "ERROR INSIDE ACTIONS, IN SEARCH");
-					}
+					console.log(payload);
 					return {
-							type: FETCH_TOILETZ,
-							payload: payload
+						type: FETCH_TOILETZ,
+						payload: payload
 					};
 				})
 				.catch(function(response) {
-					console.log(response);
+					console.log(response, "ERROR INSIDE SECOND THEN IN SEARCH IN ACTIONS");
 				})
 		})
-
+		.catch(function(response) {
+			console.log(response, "ERROR INSIDE FIRST THEN IN SEARCH IN ACTIONS");
+		})
 }
 
 export function convertAddress(address) {
@@ -50,10 +42,6 @@ export function convertAddress(address) {
 	let coords;
 	resolve(axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + API_KEY)
 		.then(function(payload) {
-			if(payload.error) {
-				console.log(payload.status, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
-				console.log(payload.statusText, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
-			}
 			console.log(payload, "PAYLOAD (GOOGLE API) IN ACTIONS, CONVERTADDRESS");
 			response = payload.data.results[0].geometry.location;
 			coords = { 
@@ -66,7 +54,7 @@ export function convertAddress(address) {
 			}	
 		}))
 		.catch(function(response) {
-			console.log(response);
+			console.log(response, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
 		})
 	})
 }

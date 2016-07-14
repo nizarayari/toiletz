@@ -10,7 +10,6 @@ export default class App extends Component {
 		      <div className="app-style">
 		     	 {this.props.children}	
 		      </div>
-		      <Footer />
       </div>
     );
   }
