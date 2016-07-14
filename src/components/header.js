@@ -12,7 +12,7 @@ export default class Header extends Component{
 			<nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
 			  <div className="container topnav">
 			    <div className="navbar-header">
-			      <h2>Toiletz</h2>
+			      <Link to={"/"}><h2>Toiletz</h2></Link>
 			    </div>
 		       		<div className="nav navbar-nav navbar-center">
 		          		<SearchBar />
