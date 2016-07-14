@@ -36,7 +36,6 @@
     "mysql": "^2.11.1",
     "nodemon": "^1.9.2",
     "q": "^1.4.1",
-    "react-bootstrap": "^0.29.5",
     "request": "^2.72.0",
     "underscore": "^1.8.3"
   },
