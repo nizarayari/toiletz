@@ -23,6 +23,13 @@ Toilet.findToiletByLocation = function(latitude, longitude) {
     });
 };
 
+Toilet.findToiletsInRadius = function(latitude, longitude) {
+  return db('toiletz').where({ latitude: latitude, longitude: longitude }).limit(1)
+    .then(function (rows) {
+      return rows[0];
+    });
+};
+
 Toilet.createToilet = function(attr) {
   return new Promise(function(resolve, reject) {
     return db('toiletz').insert(attr)

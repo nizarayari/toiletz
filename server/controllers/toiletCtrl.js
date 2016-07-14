@@ -27,8 +27,8 @@ module.exports = {
         name: req.body.name,
         description: req.body.description,
         id_Users: req.body.id_Users,
-        latitude: req.body.location,
-        longitude: req.body.location,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
         address: req.body.address
       };
 
@@ -43,7 +43,7 @@ module.exports = {
               .then(function(result) {
                 console.log("result", result);
 
-                res.end(result);
+                res.send(result);
               });
           }
         });
@@ -55,6 +55,35 @@ module.exports = {
     delete: function(req, res) {
       console.log("Received DELETE at /api/toilet/");
       res.end("Received DELETE at /api/toilet/");
+    }
+  },
+  '/location/': {
+    get: function(req,res) {
+      console.log("Received GET at /api/toilet/location");
+    },
+    post: function(req, res) {
+      console.log("Received POST at /api/toilet/location");
+
+      var loc = {
+        lat: req.body.latitude,
+        long: req.body.longitude,
+        address: req.body.address
+      };
+
+      Toilet.findToiletsInRadius(loc.lat, loc.long)
+        .then(function(result) {
+          res.send(result);
+        });
+
+      res.end("Received POST at /api/toilet/location");
+    },
+    put: function(req, res) {
+      console.log("Received PUT at /api/toilet/location");
+      res.end("Received PUT at /api/toilet/location");
+    },
+    delete: function(req, res) {
+      console.log("Received DELETE at /api/toilet/location");
+      res.end("Received DELETE at /api/toilet/location");
     }
   },
   '/:toiletId': {
