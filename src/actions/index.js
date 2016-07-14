@@ -6,10 +6,11 @@ import querystring from 'querystring';
 //const ROOT_URL = 'localhost://3000'
 const API_KEY = "AIzaSyAUpKh2acbg-j_j4aRr-DGjeF7NXwCK_J4";    //This will be imported from env-google but it's not working now so just put your key here and remove before push
 
-export const FETCH_USER = 'FETCH_USER';
+
 export const FETCH_TOILET = 'FETCH_TOILET';
 export const FETCH_TOILETZ = 'FETCH_TOILETZ';
 export const SELECT_TOILETZ = 'SELECT_TOILETZ';
+export const CREATE_TOILET = 'CREATE_TOILET';
 
 export function search(endpoint) {
 	return convertAddress(endpoint)
@@ -71,6 +72,15 @@ export function SelectToilet(toilet){
 	};
 }
 
+export function createToilet(props) {
+	const request = axios.post('./api/toilet//',props);
+
+	return {
+		type: CREATE_TOILET,
+		payload: request
+	};
+
+}
 
 
 

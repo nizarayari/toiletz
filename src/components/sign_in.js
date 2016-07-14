@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { connect } from  'react-redux';
 import React, { Component } from 'react';
-import * as actions from '../actions/index';
+import * as actions from '../actions/login';
 
 
 class SignIn extends Component {
@@ -19,7 +19,7 @@ class SignIn extends Component {
 	
 
 	onFormSubmit(event) {
-		//this.props.search(this.state.term);
+		//this.props.login(this.state.term);
 		this.setState({ 
 			name: "", 
 			pwd: ""
