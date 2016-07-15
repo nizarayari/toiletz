@@ -86,7 +86,7 @@ export default class SimpleMap extends Component{
         height={'600px'}
         lat={34.016484}
         lng={-118.496216}
-        zoom={14}
+        zoom={13}
         loadingMessage={'Loading...'}
         params={{v: '3.exp', key: 'AIzaSyB85KqmtnH-PdxoaFTRZRWZJLI6H48oa-Q'}}
         onMapCreated={this.onMapCreated}>
@@ -115,7 +115,7 @@ export default class SimpleMap extends Component{
                 key={index}
                   lat={toilet.latitude}
                   lng={toilet.longitude}
-                  content={toilet.description+"\n"+toilet.description}
+                  content={toilet.name+' -- '+toilet.description+' -- '+toilet.address}
                   onCloseClick={this.onCloseClick.bind(this, index)} />
               )
             }})}

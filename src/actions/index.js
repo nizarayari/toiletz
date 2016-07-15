@@ -73,13 +73,32 @@ export function SelectToilet(toilet){
 }
 
 export function createToilet(props) {
-	const request = axios.post('./api/toilet//',props);
+ 	return convertAddress(props.address)
+		.then(function(payload) {
+			
+			let params = {
+	            name:props.name,
+	            description:props.description,
+	            id_users:2358,
+	            latitude: payload.data.latitude,
+			    longitude: payload.data.longitude,
+			    address: payload.data.address
+			};
 
-	return {
-		type: CREATE_TOILET,
-		payload: request
-	};
-
+			const request = axios.post('./api/toilet/',params);
+					return {
+						type: CREATE_TOILET,
+						payload: request
+					};
+			
+			})
+		.catch(function(response) {
+			console.log("ENTER A VALID LOCATION")
+			return {
+						type: FETCH_TOILETZ,
+						payload: "ENTER A VALID LOCATION"
+					};	 
+		})
 }
 
 
