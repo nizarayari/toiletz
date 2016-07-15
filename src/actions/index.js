@@ -73,22 +73,32 @@ export function SelectToilet(toilet){
 }
 
 export function createToilet(props) {
-	const request = axios.post('./api/toilet//',props);
+ 	return convertAddress(props.address)
+		.then(function(payload) {
+			
+			let params = {
+	            name:props.name,
+	            description:props.description,
+	            id_users:2358,
+	            latitude: payload.data.latitude,
+			    longitude: payload.data.longitude,
+			    address: payload.data.address
+			};
 
-	let params = {
-'name': 'Venice beach',
-'description': 'public Restroom',
-'id_Users': '2358',
-'latitude': '33.985927',
-'longitude': '-118.472789',
-'address': '1800 Ocean Front Walk, Los Angeles, CA 90291'
-}
-
-	return {
-		type: CREATE_TOILET,
-		payload: request
-	};
-
+			const request = axios.post('./api/toilet/',params);
+					return {
+						type: CREATE_TOILET,
+						payload: request
+					};
+			
+			})
+		.catch(function(response) {
+			console.log("ENTER A VALID LOCATION")
+			return {
+						type: FETCH_TOILETZ,
+						payload: "ENTER A VALID LOCATION"
+					};	 
+		})
 }
 
 
