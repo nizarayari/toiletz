@@ -7,10 +7,12 @@ import querystring from 'querystring';
 const API_KEY = "AIzaSyAUpKh2acbg-j_j4aRr-DGjeF7NXwCK_J4";    //This will be imported from env-google but it's not working now so just put your key here and remove before push
 
 
-export const FETCH_TOILET = 'FETCH_TOILET';
+
 export const FETCH_TOILETZ = 'FETCH_TOILETZ';
+export const FETCH_REVIEWS = 'FETCH_REVIEWS';
 export const SELECT_TOILETZ = 'SELECT_TOILETZ';
 export const CREATE_TOILET = 'CREATE_TOILET';
+export const CREATE_REVIEW = 'CREATE_REVIEW';
 
 export function search(endpoint) {
 	return convertAddress(endpoint)
@@ -72,6 +74,19 @@ export function SelectToilet(toilet){
 	};
 }
 
+export function getReviews (toiletId){
+	//SelectToilet is an ActionCreator, it needs to return an action,
+	// an object with a type property.
+
+	const request = axios.get('./api/review/toilet/'+toiletId)
+		return {
+			type: FETCH_REVIEWS,
+			payload: request
+		};
+}
+
+
+
 export function createToilet(props) {
  	return convertAddress(props.address)
 		.then(function(payload) {
@@ -99,6 +114,24 @@ export function createToilet(props) {
 						payload: "ENTER A VALID LOCATION"
 					};	 
 		})
+}
+
+export function createReview(props,toilet) {
+		console.log(props,toilet,"inside action")	
+	let params = {
+	    description:props.description,
+	    rating:props.rating,
+	    recommend: true,
+	    id_Users:15,
+	    id_Toiletz: toilet.id
+	};
+
+	const request = axios.post('./api/review/',params);
+	
+	return {
+		type: CREATE_REVIEW,
+		payload: request
+	};
 }
 
 
