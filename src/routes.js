@@ -8,6 +8,7 @@ import Landing from './components/landing';
 import SignIn from './components/sign_in';
 import SignUp from './components/sign_up';
 import ToiletzNew from './components/toiletz_new';
+import ReviewsNew from './components/review_new';
 
 export default (
 	<Router>
@@ -18,6 +19,7 @@ export default (
 			<Route path="sign_in" component={SignIn} />
 			<Route path="sign_up" component={SignUp} />
 			<Route path="toiletz_new" component={ToiletzNew} />
+			<Route path="review_new" component={ReviewsNew} />
 		</Route>
 	</Router>
 );

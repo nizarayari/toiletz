@@ -1,7 +1,34 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions/index';
+import { Link } from 'react-router';
 
 class ToiletDetail extends Component{
+
+	componentWillMount(){
+		this.props.getReviews(this.props.toilet.id)
+	}
+
+	renderReviews(){
+		console.log(this.props.reviews, "inside render Reviews")
+		if (!!this.props.reviews){
+			return (
+				<li className='list-group-item'>
+					<strong>No reviews for this toilet.</strong>
+				</li>
+			)
+		}
+
+		return this.props.reviews.map((review) => {
+			return (
+				<li className='list-group-item' key={review.id}>
+					<span className='pull-xs-right'> {review.rating}/5</span>
+					<strong>{review.description}</strong>
+				</li>
+			)
+		})
+	}
+
 
 	render(){
 		if(!this.props.toilet){
@@ -12,7 +39,15 @@ class ToiletDetail extends Component{
 		return (
 			<div>
 				<h3>Details for:</h3>
-				<div>{this.props.toilet.description}</div>
+				<ul className='lis-group'>
+				<li className='list-group-item'>{this.props.toilet.name}</li>
+				<li className='list-group-item'>{this.props.toilet.description}</li>
+				<li className='list-group-item'>{this.props.toilet.address}</li>
+				{this.renderReviews()}
+				</ul>
+				<Link to={'review_new'}>
+				<button type='submit' className='btn btn-primary'>Add a review</button>
+				</Link>
 			</div>
 		);
 	}
@@ -20,11 +55,12 @@ class ToiletDetail extends Component{
 
 function mapStateToProps(state){
 	return {
-		toilet:state.activeToilet //from rootReducer (index.js in reducers)
+		toilet: state.activeToilet, //from rootReducer (index.js in reducers)
+		reviews: state.reviews
 	}
 }
 //   connect reducers and containers here
-export default connect (mapStateToProps)(ToiletDetail);
+export default connect (mapStateToProps,actions)(ToiletDetail);
 
 //reviews
 //description
