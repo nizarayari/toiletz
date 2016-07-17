@@ -12,30 +12,33 @@ class ToiletDetail extends Component{
 	renderReviews(){
 		let reviewsObj = this.props.reviews;
 		let reviewsArray = [];
-		if (reviewsObj) {
+		let tempError = '"Received GET at /api/review/toilet/:reviewId"';
+		console.log(JSON.stringify(reviewsObj) ==tempError);
+		if(JSON.stringify(reviewsObj) == tempError) {
+			return (
+				<li className='list-group-item'>
+					<strong>No reviews for this toilet.</strong>
+				</li>
+			)
+		} else if (reviewsObj) {
 			for(var prop in reviewsObj) {
 				reviewsArray.push(reviewsObj[prop]);
 			}
 			return reviewsArray.map((review) => {
 				return (
 					<div>
-						<ul className='list-group' key={review.id}>
-							<li className='list-group-item'>
-								<div><h5>{review.rating}/5</h5></div>
-								<div><strong>{review.description}</strong></div>
+						<ul className='list-group'>
+							<li className='list-group-item' key={review.id}>
+								<h5>{review.rating}/5</h5>
+								<strong>{review.description}</strong>
 							</li>
 						</ul>
 					</div>
 				);
 			})	
 		} else {
-			return (
-				<li className='list-group-item'>
-					<strong>No reviews for this toilet.</strong>
-				</li>
-			)
+			console.log("SOMETHING WENT WRONG WITH REVIEWS IN TOILET_DETAILS");
 		}
-
 	}
 
 	renderLink(){
@@ -52,7 +55,6 @@ class ToiletDetail extends Component{
 		if(!this.props.toilet){
 			return <div>Select a toilet.</div>
 		}
-
 
 		return (
 			<div>
