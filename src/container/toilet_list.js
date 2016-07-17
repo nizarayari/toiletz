@@ -15,21 +15,18 @@ class ToiletList extends Component{
         				<h3>{this.props.toilets}</h3>
         			</div>
 			)
-	}
+		}
 		
 		return this.props.toilets.map((toilet, index) => {
-			return (
-				
-				<li 
-				onClick={()=> this.props.selectToilet(toilet)}
-				style={{cursor:'pointer'}}
-				key={index}>
-				{toilet.description}
-				</li>
-				
+			return (	
+				<div 
+					onClick={()=> this.props.selectToilet(toilet)}
+					style={{cursor:'pointer'}}
+					key={index}>
+					{toilet.description}
+				</div>
 			)
 		});
-	
 	}
 
 	render (){
@@ -38,7 +35,7 @@ class ToiletList extends Component{
     	}
    
 		return (
-				<ul> {this.renderList()}</ul>
+				<div>{this.renderList()}</div>
 			)
 	}
 }

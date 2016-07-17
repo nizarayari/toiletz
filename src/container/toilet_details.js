@@ -10,8 +10,25 @@ class ToiletDetail extends Component{
 	}
 
 	renderReviews(){
-		console.log(this.props.reviews, "inside render Reviews")
-		if (!!this.props.reviews){
+		let reviewsObj = this.props.reviews;
+		let reviewsArray = [];
+		if (reviewsObj) {
+			for(var prop in reviewsObj) {
+				reviewsArray.push(reviewsObj[prop]);
+			}
+			return reviewsArray.map((review) => {
+				return (
+					<div>
+						<ul className='list-group' key={review.id}>
+							<li className='list-group-item'>
+								<div><h5>{review.rating}/5</h5></div>
+								<div><strong>{review.description}</strong></div>
+							</li>
+						</ul>
+					</div>
+				);
+			})	
+		} else {
 			return (
 				<li className='list-group-item'>
 					<strong>No reviews for this toilet.</strong>
@@ -19,14 +36,6 @@ class ToiletDetail extends Component{
 			)
 		}
 
-		return this.props.reviews.map((review) => {
-			return (
-				<li className='list-group-item' key={review.id}>
-					<span className='pull-xs-right'> {review.rating}/5</span>
-					<strong>{review.description}</strong>
-				</li>
-			)
-		})
 	}
 
 	renderLink(){
@@ -46,14 +55,17 @@ class ToiletDetail extends Component{
 
 
 		return (
-			<div claasName='top-margin'>
+			<div>
 				<h3>Details for:</h3>
 				<ul className='list-group'>
 					<li className='list-group-item'>{this.props.toilet.name}</li>
 					<li className='list-group-item'>{this.props.toilet.description}</li>
 					<li className='list-group-item'>{this.props.toilet.address}</li>
-				{this.renderReviews()}
 				</ul>
+				<div>
+				<h3>Reviews</h3> 
+					{this.renderReviews()}
+				</div>
 				{this.renderLink()}
 			</div>
 		);
