@@ -25,37 +25,41 @@ class ToiletzNew extends Component {
 		//const title = this.props.fields.title
 
 		return (
-			<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-				<h3>Create a new Toilet</h3>
-				<div className={`form-group ${name.touched && name.invalid ? 'has-danger' : '' }`}>
-					<label> Name </label>
-					<input type="text" className='form-control' {...name}/>
-					<div className='text-help'>
-						{name.touched ? name.error : ''}
-					</div>
-				</div>
+			<div className="top-margin">
+				<div className="container">
+					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+						<h3>Create a new Toilet</h3>
+						<div className={`form-group ${name.touched && name.invalid ? 'has-danger' : '' }`}>
+							<label> Name </label>
+							<input type="text" className='form-control' {...name}/>
+							<div className='text-help'>
+								{name.touched ? name.error : ''}
+							</div>
+						</div>
 
-				<div className={`form-group ${description.touched && description.invalid ? 'has-danger' : '' }`}>
-					<label> Description </label>
-					<input type="text" className='form-control' {...description}/>
-					<div className='text-help'>
-						{description.touched ? description.error : ''}
-					</div>
-				</div>
+						<div className={`form-group ${description.touched && description.invalid ? 'has-danger' : '' }`}>
+							<label> Description </label>
+							<input type="text" className='form-control' {...description}/>
+							<div className='text-help'>
+								{description.touched ? description.error : ''}
+							</div>
+						</div>
 
-				<div className={`form-group ${address.touched && address.invalid ? 'has-danger' : '' }`}>
-					<label> Address </label>
-					<input type="text" className='form-control' {...address}/>
-					<div className='text-help'>
-						{address.touched ? address.error : ''}
-					</div>
-				</div>
+						<div className={`form-group ${address.touched && address.invalid ? 'has-danger' : '' }`}>
+							<label> Address </label>
+							<input type="text" className='form-control' {...address}/>
+							<div className='text-help'>
+								{address.touched ? address.error : ''}
+							</div>
+						</div>
 
-				<button type='submit' className='btn btn-primary' >Submit</button>
-				<Link to='/'> <button className='btn btn-danger' type='submit'>
-				Cancel</button>
-				</Link>
-			</form>
+						<button type='submit' className='btn btn-success' >Submit</button>
+						<Link to='/'> <button className='btn btn-danger' type='submit'>
+						Cancel</button>
+						</Link>
+					</form>
+				</div>
+			</div>
 
 		);
 	}

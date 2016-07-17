@@ -66,6 +66,20 @@ onSubmit(props) {
 								</div>
 				              </div>
 				            </div>
+
+				            <div className="control-group">
+				              <label className="control-label">Gender</label>
+				              <div className="controls">
+				                 <input 
+				                	className="form-control input-lg"
+			    					type="gender" 
+			    					placeholder="Gender Type: i.e.: Male, female, transgender, n/a, etc."
+					      			value={this.state.pwd}
+					      			onChange={(event)=> this.setState({ pwd: event.target.value })}
+			    				/>
+				                <p className="help-block">Please type in a gender. This field can be left blank</p>
+				              </div>
+				            </div>
 				         
 				            <div className="control-group">
 				              <label className="control-label">Password</label>

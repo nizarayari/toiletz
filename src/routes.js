@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/app';
 import Details from './components/details'
@@ -12,7 +12,7 @@ import ReviewsNew from './components/review_new';
 
 
 export default (
-	<Router>
+	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Landing} />
 			<Route path="home" component={Home} />
