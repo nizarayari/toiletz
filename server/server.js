@@ -6,9 +6,6 @@ var morgan = require('morgan');
 // var dotenv = require('dotenv');
 var dotenv = require('dotenv').config();
 
-var dummy = require('./db/dummy.js');
-
-
 // dotenv.load();
 var db = require('./db/db.js');
 
@@ -43,6 +40,5 @@ app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function() {
   db.ensureSchema();
-  dummy.init();
   console.log(moment().format('h:mm:ss a') + ': Express Server listening on port', app.get('port'));
 });
