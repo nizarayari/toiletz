@@ -14,14 +14,15 @@ module.exports = {
       console.log("creating review");
 
       console.log(req.body);
+      var newReview = req.body;
 
-      var newReview = {
-        description: "hallelujah, a clean toilet",
-        rating: 5,
-        recommend: true,
-        id_Users: 15,
-        id_Toiletz: 2
-      };
+      // var newReview = {
+      //   description: "hallelujah, a clean toilet",
+      //   rating: 5,
+      //   recommend: true,
+      //   id_Users: 15,
+      //   id_Toiletz: 2
+      // };
 
       Review.findReviewForToiletbyUser(newReview.id_Toiletz, newReview.id_Users)
         .then(function (review) {
@@ -52,10 +53,11 @@ module.exports = {
   },
   '/toilet/:toiletId': {
     get: function(req,res) {
-      console.log("Received GET at /api/review/toilet/:reviewId");
-      console.log("getting all reviews for a toilet");
+      console.log("Received GET at /api/review/toilet/:toiletId");
 
       var toiletID = url.parse(req.url,true).path.split('/toilet/')[1];
+
+      console.log("getting all reviews for toilet: ", toiletID);
 
       Review.findReviewsByToilet(toiletID)
         .then(function(reviews) {
