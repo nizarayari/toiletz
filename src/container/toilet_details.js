@@ -33,7 +33,7 @@ class ToiletDetail extends Component{
 		if(this.props.auth){
 			return (
 				<Link to={'review_new'}>
-				<button type='submit' className='btn btn-primary'>Add a review</button>
+					<button type='submit' className='btn btn-primary'>Add a review</button>
 				</Link>
 			)
 		}
@@ -46,12 +46,12 @@ class ToiletDetail extends Component{
 
 
 		return (
-			<div>
+			<div claasName='top-margin'>
 				<h3>Details for:</h3>
-				<ul className='lis-group'>
-				<li className='list-group-item'>{this.props.toilet.name}</li>
-				<li className='list-group-item'>{this.props.toilet.description}</li>
-				<li className='list-group-item'>{this.props.toilet.address}</li>
+				<ul className='list-group'>
+					<li className='list-group-item'>{this.props.toilet.name}</li>
+					<li className='list-group-item'>{this.props.toilet.description}</li>
+					<li className='list-group-item'>{this.props.toilet.address}</li>
 				{this.renderReviews()}
 				</ul>
 				{this.renderLink()}
