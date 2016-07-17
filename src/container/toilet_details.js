@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 class ToiletDetail extends Component{
 
-	componentWillMount(){
+	componentDidMount(){
 		this.props.getReviews(this.props.toilet.id)
 	}
 
@@ -29,6 +29,15 @@ class ToiletDetail extends Component{
 		})
 	}
 
+	renderLink(){
+		if(this.props.auth){
+			return (
+				<Link to={'review_new'}>
+				<button type='submit' className='btn btn-primary'>Add a review</button>
+				</Link>
+			)
+		}
+	}
 
 	render(){
 		if(!this.props.toilet){
@@ -45,9 +54,7 @@ class ToiletDetail extends Component{
 				<li className='list-group-item'>{this.props.toilet.address}</li>
 				{this.renderReviews()}
 				</ul>
-				<Link to={'review_new'}>
-				<button type='submit' className='btn btn-primary'>Add a review</button>
-				</Link>
+				{this.renderLink()}
 			</div>
 		);
 	}
@@ -56,7 +63,8 @@ class ToiletDetail extends Component{
 function mapStateToProps(state){
 	return {
 		toilet: state.activeToilet, //from rootReducer (index.js in reducers)
-		reviews: state.reviews
+		reviews: state.reviews,
+		auth:state.auth.authenticated
 	}
 }
 //   connect reducers and containers here

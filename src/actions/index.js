@@ -17,7 +17,6 @@ export const CREATE_REVIEW = 'CREATE_REVIEW';
 export function search(endpoint) {
 	return convertAddress(endpoint)
 		.then(function(payload) {
-			
 			let params = querystring.stringify({
 	            latitude: payload.data.latitude,
 			    longitude: payload.data.longitude,

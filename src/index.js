@@ -10,7 +10,7 @@ import reduxThunk from 'redux-thunk';
 
 
 const createStoreWithMiddleware = applyMiddleware(
-	reduxThunk
+	reduxThunk,promise
 )(createStore);
 
 ReactDOM.render(
