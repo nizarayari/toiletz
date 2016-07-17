@@ -108,7 +108,6 @@ export function createToilet(props) {
 			
 			})
 		.catch(function(response) {
-			console.log("ENTER A VALID LOCATION")
 			return {
 						type: FETCH_TOILETZ,
 						payload: "ENTER A VALID LOCATION"
@@ -117,7 +116,6 @@ export function createToilet(props) {
 }
 
 export function createReview(props,toilet) {
-		console.log(props,toilet,"inside action")	
 	let params = {
 	    description:props.description,
 	    rating:props.rating,

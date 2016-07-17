@@ -1,10 +1,58 @@
 import SearchBar from './search';
 import { Link } from 'react-router';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/auth';
 
 
 
-export default class Header extends Component{
+class Header extends Component{
+
+
+	renderLinks(){
+		if (this.props.auth){
+			//show a link to sign out
+			//show a link to add toilet
+		return(	<div className="nav navbar-nav navbar-right">
+			<span>
+				<Link to={'toiletz_new'}>
+					<span>
+						<button className="btn btn-default">Add Toilet</button>
+					</span>
+				</Link>
+			</span>
+			<span>
+				<Link to={'/'}>
+					<span>
+						<button onClick ={this.props.signoutUser.bind(this)} className="btn btn-default">Log Out</button>
+					</span>
+				</Link>
+			</span>
+			</div>
+		);
+		} else {
+			//show a link to sign in or sign up
+			return (<div className="nav navbar-nav navbar-right">
+			<span>
+				<Link to={'sign_in'}>
+					<span>
+						<button className="btn btn-default">Sign In</button>
+					</span>
+				</Link>
+			</span>
+
+			<span>
+				<Link to={'sign_up'}>
+					<span>
+						<button className="btn btn-default">Sign Up</button>
+					</span>
+				</Link>
+			</span>
+			</div>
+			)			
+		}
+	}
+
 
 	render(){
 
@@ -18,34 +66,21 @@ export default class Header extends Component{
 		          		<SearchBar />
 		          	</div>
 			        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				      <div className="nav navbar-nav navbar-right">
-						<span>
-							<Link to={'sign_in'}>
-								<span>
-									<button className="btn btn-default">Sign In</button>
-								</span>
-							</Link>
-						</span>
-						<span>
-							<Link to={'sign_up'}>
-								<span>
-									<button className="btn btn-default">Sign Up</button>
-								</span>
-							</Link>
-						</span>
-						<span>
-							<Link to={'toiletz_new'}>
-								<span>
-									<button className="btn btn-default">Add Toilet</button>
-								</span>
-							</Link>
-						</span>
+						{this.renderLinks()}
 				      </div>
 			      	</div>
-			    </div>
+			   
 			</nav>
 		);
 
 	}
 }
+
+function mapStateToProps(state) {
+	return {auth:state.auth.authenticated};
+}
+
+export default connect(mapStateToProps,actions)(Header);
+
+
 

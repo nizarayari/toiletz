@@ -1,82 +1,105 @@
 import { Link } from 'react-router';
 import { connect } from  'react-redux';
 import React, { Component } from 'react';
-import * as actions from '../actions/index';
+import { reduxForm } from 'redux-form';
+import * as actions from '../actions/auth';
 
 
 class SignUp extends Component {
 
-	constructor(props) {
-		super(props);
+renderAlert(){
+	if(this.props.errorMessage){
+		return (
+			<div className='alert alert-danger'>
+				<strong>Oops!</strong>{this.props.errorMessage}
+			</div>
+			);
+	}
+}
 
-		this.state = { 
-			name: "",
-			pwd: ""
-		};
+onSubmit(props) {
 
-		this.onFormSubmit = this.onFormSubmit.bind(this);
+		this.props.signupUser(props)		
+	
 	}
 	
-
-	onFormSubmit(event) {
-		//this.props.search(this.state.term);
-		this.setState({ 
-			name: "", 
-			pwd: ""
-		});
-	}
-
     render() {
+    	const { fields:{ gender, email, password, passwordConfirm}, handleSubmit } = this.props
+
+
 	    return (
 	    <div className="top-margin">
 			<div className="container">
 			  <div className="row">
 			  	<div className="col-md-6">
-			          <form className="form-horizontal" method="POST">
+			          <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }   className="form-horizontal">
 			          	<fieldset>
 				            <div id="legend">
 				              <legend className="">Sign Up</legend>
 				            </div>
 
-				            <div className="control-group">
-				              <label className="control-label">Username</label>
+				             <div className="control-group">
+				              <label className="control-label">Gender</label>
 				              <div className="controls">
-				                <input 
+				                <input {...gender}
 				                	className="form-control input-lg"
 			    					type='text'
-			    					placeholder="Type your username"
-					      			value={this.state.name}
-					      			onChange={(event)=> this.setState({ name: event.target.value })}
+			    					placeholder="male or female"
 					      		/>
-				                <p className="help-block">Username can contain any letters or numbers, without spaces</p>
+					      		<div className='text-help' style={{color:'red'}}>
+									{gender.touched && gender.error ? gender.error : ''}
+								</div>
 				              </div>
 				            </div>
-				         
+
+
 				            <div className="control-group">
-				              <label className="control-label">E-mail</label>
+				              <label className="control-label">Email</label>
 				              <div className="controls">
-				               <input type="email" id="email" name="email" placeholder="Type your email" className="form-control input-lg"></input>
-				                <p className="help-block">Please provide your E-mail</p>
+				                <input {...email}
+				                	className="form-control input-lg"
+			    					type='text'
+			    					placeholder="type your email"
+					      		/>
+					      		<div className='text-help' style={{color:'red'}}>
+									{email.touched && email.error ? email.error : ''}
+								</div>
 				              </div>
 				            </div>
 				         
 				            <div className="control-group">
 				              <label className="control-label">Password</label>
 				              <div className="controls">
-				                <input 
+				                <input {...password}
 				                	className="form-control input-lg"
 			    					type="password" 
-			    					placeholder="Type your password"
-					      			value={this.state.pwd}
-					      			onChange={(event)=> this.setState({ pwd: event.target.value })}
+			    					placeholder="type your password"
 			    				/>
-				                <p className="help-block">Password should be at least 6 characters</p>
+			    				<div className='text-help' style={{color:'red'}}>
+									{password.touched && password.error ? password.error : ''}
+								</div>
 				              </div>
 				            </div>
-				         
+
+				            <div className="control-group">
+				              <label className="control-label">Confirm Password</label>
+				              <div className="controls">
+				                <input {...passwordConfirm}
+				                	className="form-control input-lg"
+			    					type="password" 
+			    					placeholder="confirm your password"
+			    				/>
+			    				<div className='text-help' style={{color:'red'}}>
+									{passwordConfirm.touched && passwordConfirm.error ? passwordConfirm.error : ''}
+								</div>
+				              </div>
+				            </div>
+
 				            <div className="control-group">
 				              <div className="controls">
-				                <button className="btn btn-success" onClick={this.onFormSubmit} type="submit">Sign Up</button>
+				              	<p>Already have an account?<Link to={'sign_in'}><strong>Sign In</strong></Link></p>
+				                {this.renderAlert()}
+				                <button className="btn btn-success"  type="submit">Sign up</button>
 				              </div>
 				            </div>
 			         	</fieldset>
@@ -89,9 +112,45 @@ class SignUp extends Component {
     };
 };
 
+//Form Validation
 
-function mapStateToProps(state) {
-	return {};
+function validate(values){
+	const errors = {};
+
+	if(!values.gender){
+		errors.gender = 'Please enter a gender';
+	}
+
+	if(!values.email){
+		errors.email = 'Please enter an email';
+	}
+
+	if(!values.password){
+		errors.password = 'Please enter a password';
+	}
+
+	if(!values.passwordConfirm){
+		errors.passwordConfirm = 'Please enter a password confirmation';
+	}
+
+	if(values.password !== values.passwordConfirm){
+		errors.password = 'Passwords must match';
+	}
+
+
+	return errors;
+
 }
 
-export default connect(mapStateToProps, actions)(SignUp);
+function mapStateToProps(state){
+	return {
+		errorMessage: state.auth.error, //from rootReducer (index.js in reducers)
+	}
+}
+
+
+export default reduxForm({
+	form: 'signup',
+	fields: ['gender','email','password','passwordConfirm'],
+	validate
+},mapStateToProps,actions)(SignUp)
