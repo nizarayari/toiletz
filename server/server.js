@@ -7,7 +7,7 @@ var path = require('path');
 var jwt = require('jsonwebtoken');
 var helpers = require('./helpers/helpers.js');
 
-var dotenv = require('dotenv').config();
+// var dotenv = require('dotenv').config();
 
 var db = require('./db/db.js');
 
