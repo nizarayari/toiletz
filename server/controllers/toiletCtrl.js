@@ -43,7 +43,7 @@ module.exports = {
               .then(function(result) {
                 console.log("result", result);
 
-                res.send(result);
+                return res.send(result);
               });
           }
         });

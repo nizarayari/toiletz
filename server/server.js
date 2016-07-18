@@ -38,6 +38,8 @@ app.use('/api/toilet', routesToilet);
 app.use('/api/auth', routesAuth);
 app.use('/api/tag', routesTag);
 
+
+
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, '../src', 'index.html'));
 });
