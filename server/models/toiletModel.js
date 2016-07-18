@@ -16,17 +16,25 @@ Toilet.findAllToilets = function() {
     });
 };
 
-Toilet.findToiletByLocation = function(latitude, longitude) {
-  return db('toiletz').where({ latitude: latitude, longitude: longitude }).limit(1)
+Toilet.findToiletByLocation = function(lat, long) {
+  return db('toiletz').where({ latitude: lat, longitude: long }).limit(1)
     .then(function (rows) {
       return rows[0];
     });
 };
 
-Toilet.findToiletsInRadius = function(latitude, longitude) {
-  return db('toiletz').where({ latitude: latitude, longitude: longitude }).limit(1)
+Toilet.findToiletsInRadius = function(lat, long) {
+
+  console.log("inside toilets in radius");
+  var rad = 0.015;
+
+  console.log("lat", lat);
+  console.log("long", long);
+
+  return db('toiletz').whereBetween('latitude', [lat - rad, lat + rad])
+  .andWhereBetween('longitude', [long - rad, long + rad])
     .then(function (rows) {
-      return rows[0];
+      return rows;
     });
 };
 

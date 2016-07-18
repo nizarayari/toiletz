@@ -1,3 +1,5 @@
+var jwt = require('jsonwebtoken');
+
 // route middleware to verify a token
 module.exports.tokenCheck = function(req, res, next) {
 
