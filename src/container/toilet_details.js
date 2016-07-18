@@ -10,30 +10,42 @@ class ToiletDetail extends Component{
 	}
 
 	renderReviews(){
-		console.log(this.props.reviews, "inside render Reviews")
-		if (!!this.props.reviews){
+		let reviewsObj = this.props.reviews;
+		let reviewsArray = [];
+		let tempError = '"Received GET at /api/review/toilet/:reviewId"';
+		console.log(JSON.stringify(reviewsObj) ==tempError);
+		if(JSON.stringify(reviewsObj) == tempError) {
 			return (
 				<li className='list-group-item'>
 					<strong>No reviews for this toilet.</strong>
 				</li>
 			)
+		} else if (reviewsObj) {
+			for(var prop in reviewsObj) {
+				reviewsArray.push(reviewsObj[prop]);
+			}
+			return reviewsArray.map((review) => {
+				return (
+					<div>
+						<ul className='list-group'>
+							<li className='list-group-item' key={review.id}>
+								<h5>{review.rating}/5</h5>
+								<strong>{review.description}</strong>
+							</li>
+						</ul>
+					</div>
+				);
+			})	
+		} else {
+			console.log("SOMETHING WENT WRONG WITH REVIEWS IN TOILET_DETAILS");
 		}
-
-		return this.props.reviews.map((review) => {
-			return (
-				<li className='list-group-item' key={review.id}>
-					<span className='pull-xs-right'> {review.rating}/5</span>
-					<strong>{review.description}</strong>
-				</li>
-			)
-		})
 	}
 
 	renderLink(){
 		if(this.props.auth){
 			return (
 				<Link to={'review_new'}>
-				<button type='submit' className='btn btn-primary'>Add a review</button>
+					<button type='submit' className='btn btn-primary'>Add a review</button>
 				</Link>
 			)
 		}
@@ -44,16 +56,18 @@ class ToiletDetail extends Component{
 			return <div>Select a toilet.</div>
 		}
 
-
 		return (
 			<div>
 				<h3>Details for:</h3>
-				<ul className='lis-group'>
-				<li className='list-group-item'>{this.props.toilet.name}</li>
-				<li className='list-group-item'>{this.props.toilet.description}</li>
-				<li className='list-group-item'>{this.props.toilet.address}</li>
-				{this.renderReviews()}
+				<ul className='list-group'>
+					<li className='list-group-item'>{this.props.toilet.name}</li>
+					<li className='list-group-item'>{this.props.toilet.description}</li>
+					<li className='list-group-item'>{this.props.toilet.address}</li>
 				</ul>
+				<div>
+				<h3>Reviews</h3> 
+					{this.renderReviews()}
+				</div>
 				{this.renderLink()}
 			</div>
 		);
