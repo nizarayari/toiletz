@@ -96,7 +96,8 @@ export function createToilet(props) {
 	            id_users:2358,
 	            latitude: payload.data.latitude,
 			    longitude: payload.data.longitude,
-			    address: payload.data.address
+			    address: payload.data.address,
+			    headers: { authorization: localStorage.getItem('token') }
 			};
 
 			const request = axios.post('./api/toilet/',params);
@@ -120,7 +121,8 @@ export function createReview(props,toilet) {
 	    rating:props.rating,
 	    recommend: true,
 	    id_Users:15,
-	    id_Toiletz: toilet.id
+	    id_Toiletz: toilet.id,
+	    headers: { authorization: localStorage.getItem('token') }
 	};
 
 	const request = axios.post('./api/review/',params);
