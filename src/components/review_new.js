@@ -2,7 +2,6 @@ import React,{ Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { createReview } from '../actions/index';
 import { Link } from 'react-router';
-import {USER_ID} from '../actions/auth'
 
 class ReviewsNew extends Component {
 	//Navigating onSubmit
@@ -12,8 +11,7 @@ class ReviewsNew extends Component {
 	
 	onSubmit(props) {
 		const toilet = this.props.toilet;
-		const userId = USER_ID;
-		console.log(USER_ID,"ID");
+		const userId = localStorage.getItem('userId');
 		this.props.createReview(props,toilet,userId)
 			.then(() => {
 				this.context.router.push('/')

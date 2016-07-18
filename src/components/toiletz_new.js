@@ -2,7 +2,6 @@ import React,{ Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { createToilet } from '../actions/index';
 import { Link } from 'react-router';
-import {USER_ID} from '../actions/auth';
 
 class ToiletzNew extends Component {
 	//Navigating onSubmit
@@ -11,7 +10,7 @@ class ToiletzNew extends Component {
 	};
 	
 	onSubmit(props) {
-		const userId = USER_ID;
+		const userId = localStorage.getItem('userId');
 		this.props.createToilet(props,userId)
 			.then(() => {
 				// toilet post has been created, navigate the user to the index

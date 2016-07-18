@@ -79,7 +79,6 @@ function mapStateToProps(state){
 		toilet: state.activeToilet, //from rootReducer (index.js in reducers)
 		reviews: state.reviews,
 		auth:state.auth.authenticated,
-		user:state.user
 	}
 }
 //   connect reducers and containers here

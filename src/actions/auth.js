@@ -3,8 +3,6 @@ import { browserHistory } from 'react-router';
 export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
 export const AUTH_ERROR = 'auth_error';
-export const STORE_USER = 'STORE_USER';
-export let USER_ID;
 
 
 export function login({ email, password }) {
@@ -21,7 +19,6 @@ export function login({ email, password }) {
             localStorage.setItem('userId',response.data.user.id)
             // - redirect to the route '/'
             browserHistory.push('/');
-            storeId(response);
         })
         .catch(() => {
             //if request is bad...
@@ -59,7 +56,4 @@ export function authError(error){
 export function signoutUser(){
     localStorage.removeItem('token');
     return { type: UNAUTH_USER }
-}
-export function storeId(response) {
-    USER_ID = response.data.user.id;
 }
