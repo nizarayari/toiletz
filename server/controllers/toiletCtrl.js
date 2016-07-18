@@ -72,10 +72,10 @@ module.exports = {
 
       Toilet.findToiletsInRadius(loc.lat, loc.long)
         .then(function(result) {
+          console.log("returned radius stuff");
           res.send(result);
         });
 
-      res.end("Received POST at /api/toilet/location");
     },
     put: function(req, res) {
       console.log("Received PUT at /api/toilet/location");

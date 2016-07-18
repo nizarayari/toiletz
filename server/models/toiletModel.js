@@ -17,7 +17,7 @@ Toilet.findAllToilets = function() {
 };
 
 Toilet.findToiletByLocation = function(lat, long) {
-  return db('toiletz').whereBetween({ latitude: lat, longitude: long }).limit(1)
+  return db('toiletz').where({ latitude: lat, longitude: long }).limit(1)
     .then(function (rows) {
       return rows[0];
     });
@@ -25,11 +25,16 @@ Toilet.findToiletByLocation = function(lat, long) {
 
 Toilet.findToiletsInRadius = function(lat, long) {
 
-  var rad = 500;
+  console.log("inside toilets in radius");
+  var rad = 0.015;
 
-  return db('toiletz').whereBetween('latitude', [lat - rad, lat + rad]).whereBetween('longitude', [long - rad, long + rad])
+  console.log("lat", lat);
+  console.log("long", long);
+
+  return db('toiletz').whereBetween('latitude', [lat - rad, lat + rad])
+  .andWhereBetween('longitude', [long - rad, long + rad])
     .then(function (rows) {
-      return rows[0];
+      return rows;
     });
 };
 
