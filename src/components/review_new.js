@@ -22,29 +22,31 @@ class ReviewsNew extends Component {
 		const { fields:{description, rating}, handleSubmit,toilet } = this.props
 
 		return (
-			<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-				<h3>Create a new Review</h3>
-				<div className={`form-group ${description.touched && description.invalid ? 'has-danger' : '' }`}>
-					<label> Content </label>
-					<textarea type="text" className='form-control' {...description}/>
-					<div className='text-help'>
-						{description.touched ? description.error : ''}
+			<div className="top-margin">
+				<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+					<h3>Create a new Review</h3>
+					<div className={`form-group ${description.touched && description.invalid ? 'has-danger' : '' }`}>
+						<label> Content </label>
+						<textarea type="text" className='form-control' {...description}/>
+						<div className='text-help'>
+							{description.touched ? description.error : ''}
+						</div>
 					</div>
-				</div>
 
-				<div className={`form-group ${rating.touched && rating.invalid ? 'has-danger' : '' }`}>
-					<label> Rating /5</label>
-					<input type="number" className='form-control' {...rating}/>
-					<div className='text-help'>
-						{rating.touched ? rating.error : ''}
+					<div className={`form-group ${rating.touched && rating.invalid ? 'has-danger' : '' }`}>
+						<label> Rating /5</label>
+						<input type="number" className='form-control' {...rating}/>
+						<div className='text-help'>
+							{rating.touched ? rating.error : ''}
+						</div>
 					</div>
-				</div>
 
-				<button type='submit' className='btn btn-primary' >Submit</button>
-				<Link to='/'> <button className='btn btn-danger' type='submit'>
-				Cancel</button>
-				</Link>
-			</form>
+					<button type='submit' className='btn btn-primary' >Submit</button>
+					<Link to='/'> <button className='btn btn-danger' type='submit'>
+					Cancel</button>
+					</Link>
+				</form>
+			</div>
 
 		);
 	}
