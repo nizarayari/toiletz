@@ -16,14 +16,6 @@ module.exports = {
       console.log(req.body);
       var newReview = req.body;
 
-      // var newReview = {
-      //   description: "hallelujah, a clean toilet",
-      //   rating: 5,
-      //   recommend: true,
-      //   id_Users: 15,
-      //   id_Toiletz: 2
-      // };
-
       Review.findReviewForToiletbyUser(newReview.id_Toiletz, newReview.id_Users)
         .then(function (review) {
           if (review) {
