@@ -18,6 +18,7 @@ export function login({ email, password }) {
             dispatch({ type: AUTH_USER })
             // - Save the JWT token
             localStorage.setItem('token',response.data.token)
+            localStorage.setItem('userId',response.data.user.id)
             // - redirect to the route '/'
             browserHistory.push('/');
             storeId(response);
