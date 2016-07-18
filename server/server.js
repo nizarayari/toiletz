@@ -5,6 +5,7 @@ var app = express();
 var morgan = require('morgan');
 // var dotenv = require('dotenv');
 var path = require('path');
+var jwt = require('jsonwebtoken');
 
 var dotenv = require('dotenv').config();
 
