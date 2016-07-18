@@ -5,6 +5,7 @@ server/.DS_Store
 /src/env-google
 server/.env
 .config
+.env
 
 # IntelliJ
 *.iml
