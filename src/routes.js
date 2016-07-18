@@ -9,7 +9,7 @@ import SignIn from './components/sign_in';
 import SignUp from './components/sign_up';
 import ToiletzNew from './components/toiletz_new';
 import ReviewsNew from './components/review_new';
-
+import RequireAuth from './components/require_auth'
 
 export default (
 	<Router history={browserHistory}>
@@ -19,8 +19,8 @@ export default (
 			<Route path="details" component={Details} />
 			<Route path="sign_in" component={SignIn} />
 			<Route path="sign_up" component={SignUp} />
-			<Route path="toiletz_new" component={ToiletzNew} />
-			<Route path="review_new" component={ReviewsNew} />
+			<Route path="toiletz_new" component={RequireAuth(ToiletzNew)} />
+			<Route path="review_new" component={RequireAuth(ReviewsNew)} />
 		</Route>
 	</Router>
 );
