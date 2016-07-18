@@ -15,6 +15,7 @@ module.exports = {
 
       console.log(req.body);
       var newReview = req.body;
+      delete newReview.token;
 
       Review.findReviewForToiletbyUser(newReview.id_Toiletz, newReview.id_Users)
         .then(function (review) {
