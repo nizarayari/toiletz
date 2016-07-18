@@ -11,6 +11,7 @@ import ToiletzNew from './components/toiletz_new';
 import ReviewsNew from './components/review_new';
 import RequireAuth from './components/require_auth'
 
+
 export default (
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
