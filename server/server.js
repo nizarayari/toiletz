@@ -4,6 +4,8 @@ var moment = require('moment');
 var app = express();
 var morgan = require('morgan');
 // var dotenv = require('dotenv');
+var path = require('path');
+
 var dotenv = require('dotenv').config();
 
 // dotenv.load();
@@ -35,6 +37,10 @@ app.use('/api/user', routesUser);
 app.use('/api/toilet', routesToilet);
 app.use('/api/auth', routesAuth);
 app.use('/api/tag', routesTag);
+
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, '../src', 'index.html'));
+});
 
 app.set('port', process.env.PORT || 3000);
 
