@@ -41,7 +41,7 @@ app.use('/api/tag', routesTag);
 
 
 app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, './src', 'index.html'));
+  response.sendFile(path.resolve(__dirname, '../src', 'index.html'));
 });
 
 app.set('port', process.env.PORT || 3000);
