@@ -29,8 +29,8 @@ class ToiletDetail extends Component{
 					<div>
 						<ul className='list-group'>
 							<li className='list-group-item' key={review.id}>
-								<h5>{review.rating}/5</h5>
-								<strong>{review.description}</strong>
+								<h5>Toilet Rating: {review.rating}/5</h5>
+								<p>Toilet Description: {review.description}</p>
 							</li>
 						</ul>
 					</div>
@@ -58,7 +58,7 @@ class ToiletDetail extends Component{
 
 		return (
 			<div>
-				<h3>Details for:</h3>
+				<h3>Details</h3>
 				<ul className='list-group'>
 					<li className='list-group-item'>{this.props.toilet.name}</li>
 					<li className='list-group-item'>{this.props.toilet.description}</li>
