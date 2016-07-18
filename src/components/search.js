@@ -33,7 +33,7 @@ class SearchBar extends Component {
 		      />
 		     </div>
 		      <Link to={'home'}>
-			      <span>
+			      <span className="header-btn">
 			      	<button type="submit" className="btn btn-default" onClick={this.onFormSubmit}>Submit</button>
 			      </span>
 		      </Link>

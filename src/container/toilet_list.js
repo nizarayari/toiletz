@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -23,7 +24,14 @@ class ToiletList extends Component{
 					onClick={()=> this.props.selectToilet(toilet)}
 					style={{cursor:'pointer'}}
 					key={index}>
-					{toilet.description}
+					<div>
+						<Link to={'details'}><ul className='list-group'>
+							<li className='list-group-item' key={toilet.id}>
+								<h5>{toilet.name}</h5>
+								<strong>{toilet.description}</strong>
+							</li>
+						</ul></Link>
+					</div>
 				</div>
 			)
 		});

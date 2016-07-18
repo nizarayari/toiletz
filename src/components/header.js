@@ -14,14 +14,14 @@ class Header extends Component{
 			//show a link to sign out
 			//show a link to add toilet
 		return(	<div className="nav navbar-nav navbar-right">
-			<span>
+			<span className="header-btn">
 				<Link to={'toiletz_new'}>
 					<span>
 						<button className="btn btn-default">Add Toilet</button>
 					</span>
 				</Link>
 			</span>
-			<span>
+			<span className="header-btn">
 				<Link to={'/'}>
 					<span>
 						<button onClick ={this.props.signoutUser.bind(this)} className="btn btn-default">Log Out</button>
@@ -33,7 +33,7 @@ class Header extends Component{
 		} else {
 			//show a link to sign in or sign up
 			return (<div className="nav navbar-nav navbar-right">
-			<span>
+			<span className="header-btn">
 				<Link to={'sign_in'}>
 					<span>
 						<button className="btn btn-default">Sign In</button>
@@ -43,7 +43,7 @@ class Header extends Component{
 
 			<span>
 				<Link to={'sign_up'}>
-					<span>
+					<span className="header-btn">
 						<button className="btn btn-default">Sign Up</button>
 					</span>
 				</Link>
