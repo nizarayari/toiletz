@@ -4,7 +4,8 @@
   "description": "Yelp for Toilets",
   "main": "server.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "webpack": "./node_modeules/webpack/bin/webpack.js",
+    "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "npm run test -- --watch"
   },
