@@ -56,10 +56,6 @@ module.exports = {
             //redirect to signup page
           }
         });
-
-
-
-      res.end("Received POST at /api/auth/login");
     },
     put: function(req, res) {
       console.log("Received PUT at /api/auth/login");
