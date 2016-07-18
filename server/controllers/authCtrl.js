@@ -10,10 +10,6 @@ module.exports = {
     },
     post: function(req, res) {
       console.log("Received POST at /api/auth/login");
-
-      // test usage
-      // var password = 'password';
-      // var email = 'examples@email.com';
       
       var password = req.body.password;
       var email = req.body.email;
@@ -23,26 +19,34 @@ module.exports = {
           if (user) {
             console.log("user exists, checking pw");
             User.comparePasswords(user.password, password)
-              .then(function(res) {
-                if (res) {
+              .then(function(result) {
+                if (result) {
                   console.log("passwords match");
                   //proceed with login methods
+                  //
+                  console.log("this is the user:", user);
+                  console.log("this is the process.env.secret", process.env.secret);
                 
-                  var token = jwt.sign(user, app.get('superSecret'), {
-                  expiresInMinutes: 1440 // expires in 24 hours
-                });
+                  var token = jwt.sign(user, process.env.secret, {
+                    expiresIn: 1440 * 60 
+                  });
 
-                // return the information including token as JSON
-                res.json({
-                  token: token,
-                  success: true,
-                  message: "Success: password and user match"
-                });
+                  console.log("token created:", token);
+
+                  // return the information including token as JSON
+                  res.send({
+                    token: token,
+                    success: true,
+                    message: "Success: password and user match"
+                  });
+
+
                 } else {
                   console.log("passwords do not match");
+
                   res.status(401).json({
-                  success: false,
-                  message: "Failure: Password does not match"
+                    success: false,
+                    message: "Failure: Password does not match"
                   });
                   //throw error and have front end display warning
                 }
