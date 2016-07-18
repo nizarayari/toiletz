@@ -12,9 +12,9 @@ export default class Home extends Component{
 		return(
 			<div>
 				<GoogleMap />
-				<Link to={'details'}>
-					<ToiletList/>  
-				</Link>
+				<h3>Click on a toilet for more details!</h3>
+				<ToiletList/>  
+
 			</div>
 		);
 
