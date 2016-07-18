@@ -17,28 +17,23 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand
-  > The "Toiletz App"
+  > Toiletz 
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  > For people who travel and in need of using a restroom. Toiletz is a social-networking app that provides a list of accessible restrooms in an area.
+  > Travelers, vacationers and bubble guts, Toiletz is a social-networking app that provides a list of accessible restrooms in an area.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-  > Toiletz will save users time by providing access to restrooms in the vicinity.
+  > When you need to use the restroom the last thing you want to deal with is getting to one only to find that you need a key, or a code or, god forbid, that it has been visited by "one who eats Taco Bell". You just need to find relief. Toiletz is here to help you find that. Toiletz, it's yelp but for toilets!
 
 ## Problem ##
-  > Describe the problem your product solves.
-  >Travelers do not have a way to know about available restrooms in an area.
+  >When out and about, especially in a new place, there is no way of knowing where a good and accessible bathroom is.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
-  >Travelers who are in need of using a restroom can log in the Toiletz app to access the closest restroom.
+  >People who are in need of using a restroom can log in the Toiletz app to access the closest restroom.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
-  "We all gotta go, when we gotta go"
+  >"We all gotta go, when we gotta go. Toiletz, it's yelp but for toilets!""
 
 ## How to Get Started ##
 > What follows are descriptions, sample usage and server outputs for each of the Toiletz API endpoints:
@@ -104,7 +99,7 @@ Once the project moves into development, the press release can be used as a touc
 >Server output: [returns toilet if found]
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > Real User #4Realz, "I had just finished winning the road kill eat off and new I was in trouble when the first rumble came. Toiletz guided me to safety and relief. Thanks Toiletz!
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
