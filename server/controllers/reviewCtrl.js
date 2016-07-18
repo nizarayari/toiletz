@@ -34,13 +34,10 @@ module.exports = {
               .then(function(result) {
                 console.log("result", result);
 
-                res.end(result);
+                res.send(result);
               });
           }
         });
-
-
-      res.end("Received POST at /api/review");
     },
     put: function(req, res) {
       console.log("Received PUT at /api/review");
