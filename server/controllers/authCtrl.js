@@ -33,11 +33,15 @@ module.exports = {
 
                   console.log("token created:", token);
 
+                  delete user.password;
+                  delete user.salt;
+
                   // return the information including token as JSON
                   res.send({
                     token: token,
                     success: true,
-                    message: "Success: password and user match"
+                    message: "Success: password and user match",
+                    user: user
                   });
 
 
@@ -112,10 +116,15 @@ module.exports = {
                 expiresInMinutes: 1440 // expires in 24 hours
                 });
 
+                delete user.password;
+                delete user.salt;
+
                 // return the information including token as JSON
                 res.json({
                   token: token, 
-                  message: "Created user account for: " + user.username});
+                  message: "Created user account for: " + user.username,
+                  user: user
+                });
                 })
               .catch(function(err) {
                 res.send(err);
