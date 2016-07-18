@@ -41,6 +41,8 @@ h6 {
     background: url(http://fashionschoolguide.net/wp-content/uploads/2016/06/design-floor-towel-plus-dark-luxurious-bathroom-with-bathroom-decorations-picture-black-marble-bathroom.jpg) no-repeat center center;
     background-size: cover;
     margin: 0;
+    width: 100%;
+    height: auto;
 }
 
 .intro-message {

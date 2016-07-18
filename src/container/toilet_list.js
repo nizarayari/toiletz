@@ -27,8 +27,8 @@ class ToiletList extends Component{
 					<div>
 						<Link to={'details'}><ul className='list-group'>
 							<li className='list-group-item' key={toilet.id}>
-								<h5>{toilet.name}</h5>
-								<strong>{toilet.description}</strong>
+								<h5>Toilet Name: {toilet.name}</h5>
+								<strong>Toilet Description: {toilet.description}</strong>
 							</li>
 						</ul></Link>
 					</div>

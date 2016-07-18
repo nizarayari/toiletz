@@ -16,14 +16,14 @@ class Header extends Component{
 		return(	<div className="nav navbar-nav navbar-right">
 			<span className="header-btn">
 				<Link to={'toiletz_new'}>
-					<span>
+					<span className="header-btn">
 						<button className="btn btn-default">Add Toilet</button>
 					</span>
 				</Link>
 			</span>
 			<span className="header-btn">
 				<Link to={'/'}>
-					<span>
+					<span className="header-btn">
 						<button onClick ={this.props.signoutUser.bind(this)} className="btn btn-default">Log Out</button>
 					</span>
 				</Link>

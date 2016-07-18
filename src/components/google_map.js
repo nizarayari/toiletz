@@ -6,7 +6,7 @@ import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import {connect} from 'react-redux';
 
 
-const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+const image = '../assets/toilet_icon.png';
 
 export default class SimpleMap extends Component{
 
