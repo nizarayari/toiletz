@@ -2,6 +2,7 @@ import React,{ Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { createReview } from '../actions/index';
 import { Link } from 'react-router';
+import {USER_ID} from '../actions/auth'
 
 class ReviewsNew extends Component {
 	//Navigating onSubmit
@@ -11,7 +12,9 @@ class ReviewsNew extends Component {
 	
 	onSubmit(props) {
 		const toilet = this.props.toilet;
-		this.props.createReview(props,toilet)
+		const userId = USER_ID;
+		console.log(USER_ID,"ID");
+		this.props.createReview(props,toilet,userId)
 			.then(() => {
 				this.context.router.push('/')
 			});
@@ -69,6 +72,7 @@ function validate(values){
 function mapStateToProps(state){
 	return {
 		toilet: state.activeToilet, //from rootReducer (index.js in reducers)
+		user: state.user
 	}
 }
 

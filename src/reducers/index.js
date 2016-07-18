@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   reviews: ReviewsReducer,
   auth: authReducer,
   form:formReducer,
+  user:SignInReducer
 });
 
 export default rootReducer;
