@@ -10,7 +10,8 @@ class ToiletzNew extends Component {
 	};
 	
 	onSubmit(props) {
-		this.props.createToilet(props)
+		const userId = localStorage.getItem('userId');
+		this.props.createToilet(props,userId)
 			.then(() => {
 				// toilet post has been created, navigate the user to the index
 				// we navigate by calling this.context.router.push with

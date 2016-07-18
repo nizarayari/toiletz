@@ -86,18 +86,18 @@ export function getReviews (toiletId){
 
 
 
-export function createToilet(props) {
+export function createToilet(props,userId) {
  	return convertAddress(props.address)
 		.then(function(payload) {
 			
 			let params = {
 	            name:props.name,
 	            description:props.description,
-	            id_users:2358,
+	            id_users: userId,
 	            latitude: payload.data.latitude,
 			    longitude: payload.data.longitude,
 			    address: payload.data.address,
-			    headers: { authorization: localStorage.getItem('token') }
+			    token: localStorage.getItem('token')
 			};
 
 			const request = axios.post('./api/toilet/',params);
@@ -115,15 +115,17 @@ export function createToilet(props) {
 		})
 }
 
-export function createReview(props,toilet) {
+export function createReview(props,toilet,userId) {
 	let params = {
 	    description:props.description,
 	    rating:props.rating,
 	    recommend: true,
-	    id_Users:15,
+	    id_Users: userId,
 	    id_Toiletz: toilet.id,
-	    headers: { authorization: localStorage.getItem('token') }
+	    token: localStorage.getItem('token')
 	};
+
+	console.log("inside actions", params)
 
 	const request = axios.post('./api/review/',params);
 	

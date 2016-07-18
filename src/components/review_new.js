@@ -11,7 +11,8 @@ class ReviewsNew extends Component {
 	
 	onSubmit(props) {
 		const toilet = this.props.toilet;
-		this.props.createReview(props,toilet)
+		const userId = localStorage.getItem('userId');
+		this.props.createReview(props,toilet,userId)
 			.then(() => {
 				this.context.router.push('/')
 			});
@@ -69,6 +70,7 @@ function validate(values){
 function mapStateToProps(state){
 	return {
 		toilet: state.activeToilet, //from rootReducer (index.js in reducers)
+		user: state.user
 	}
 }
 
