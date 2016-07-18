@@ -9,7 +9,6 @@ export default class Index extends Component{
 		<div id="parent">
 			<div className="intro-background-img">
 				<div className="intro-header">
-			        <div className="container">
 			            <div className="row">
 			                <div className="col-lg-12">
 			                    <div className="intro-message">
@@ -24,7 +23,6 @@ export default class Index extends Component{
 			                        </ul>
 			                    </div>
 			                </div>
-			            </div>
 			        </div>
 			    </div>
 			</div>
