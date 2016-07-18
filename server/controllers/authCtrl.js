@@ -40,7 +40,7 @@ module.exports = {
                 });
                 } else {
                   console.log("passwords do not match");
-                  res.json({
+                  res.status(401).json({
                   success: false,
                   message: "Failure: Password does not match"
                   });
@@ -49,7 +49,7 @@ module.exports = {
               });
           } else {
             console.log("user does not exist");
-            res.json({
+            res.status(401).json({
               success: false,
               message: "Failure: user does not exist"
             });
@@ -94,7 +94,9 @@ module.exports = {
         .then(function(user) {      
           if (user) {
             console.log("user exists");
-            res.end("Cannot create user; user already exists");
+            res.status(401).json({
+              message: "Cannot create user; user already exists"
+            });
           } else {
             console.log("user does not exist");
             User.createUser(newAccount)
