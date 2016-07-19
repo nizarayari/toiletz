@@ -2,13 +2,16 @@ import React,{ Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { createToilet } from '../actions/index';
 import { Link } from 'react-router';
+import {bindAll} from 'lodash';
+import $ from 'jquery';
+
 
 class ToiletzNew extends Component {
 	//Navigating onSubmit
 	static contextTypes = {
 		router: PropTypes.object
 	};
-	
+
 	onSubmit(props) {
 		const userId = localStorage.getItem('userId');
 		this.props.createToilet(props,userId)

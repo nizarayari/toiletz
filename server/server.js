@@ -7,7 +7,7 @@ var path = require('path');
 var jwt = require('jsonwebtoken');
 var helpers = require('./helpers/helpers.js');
 
-// var dotenv = require('dotenv').config();
+var dotenv = require('dotenv').config();
 
 var db = require('./db/db.js');
 
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-app.use(express.static('../src'));
+app.use(express.static('./'));
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -41,10 +41,10 @@ app.use('/api/tag', routesTag);
 
 
 app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, '../src', 'index.html'));
+  response.sendFile(path.resolve(__dirname, '../', 'index.html'));
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', 3000);
 
 app.listen(app.get('port'), function() {
   db.ensureSchema();
