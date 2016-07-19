@@ -1,11 +1,41 @@
+var webpack = require('webpack')
+var path = require('path')
+
 module.exports = {
   entry: [
+
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:8080/',
     './src/index.js'
   ],
-   output: {
+
+  output: {
+    path: __dirname,
+    publicPath: '/',
     filename: 'bundle.js',
-    path: __dirname + '/src/compiled'
+    headers: { 'Access-Control-Allow-Origin': '*' }
   },
+
+  module: {
+
+    loaders: [
+
+      {
+        query: {
+          presets: ['es2015', 'react','stage-0']
+        },
+        test: /\.js$/,
+        loader: [
+          'react-hot',
+          'babel-loader'
+
+        ],
+        exclude: /node_modules/,
+      }
+    ]
+  },
+
+
   module: {
     loaders: [
       {
@@ -17,11 +47,24 @@ module.exports = {
       }
     ]
   },
+
   devServer: {
-    contentBase: "./src",
-    hot: true
+    devtool: 'eval',
+    hot: true,
+    historyApiFallback: true,
+    contentBase: './',
+    outputPath: './'
   },
+
   resolve: {
-    extentions: ['', '.js', '.jsx']
-  }
+    extensions: ['', '.js', '.jsx']
+  },
+
+  plugins: [
+    // Allows for sync with browser while developing (like BorwserSync)
+    new webpack.HotModuleReplacementPlugin(),
+    // Allows error warninggs but does not stop compiling. Will remove when eslint is added
+    new webpack.NoErrorsPlugin(),
+  ]
+
 };
