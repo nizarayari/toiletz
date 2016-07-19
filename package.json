@@ -5,11 +5,7 @@
   "main": "server.js",
   "scripts": {
     "webpack": "./node_modeules/webpack/bin/webpack.js",
-    "start": "nodemon server/server.js",
-    "start2": "webpack-dev-server --port 8080 --devtool eval --progress --colors --hot --inline --content-base build",
-    "hot-dev-server": "webpack-dev-server --config webpack.config.js --hot --progress --colors --port 8080 --inline",
-    "startdevnode": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-
+    "start-dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "npm run test -- --watch"
   },

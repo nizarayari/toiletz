@@ -11,7 +11,6 @@ module.exports = {
 
   output: {
     path: __dirname,
-    publicPath: '/',
     filename: 'bundle.js',
     headers: { 'Access-Control-Allow-Origin': '*' }
   },
@@ -35,7 +34,6 @@ module.exports = {
     ]
   },
 
-
   module: {
     loaders: [
       {
@@ -53,7 +51,10 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     contentBase: './',
-    outputPath: './'
+    outputPath: './',
+    proxy: {
+      "*": "http://localhost:3000"
+    }
   },
 
   resolve: {
