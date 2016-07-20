@@ -16,9 +16,9 @@ class ToiletDetail extends Component{
 		console.log(JSON.stringify(reviewsObj) ==tempError);
 		if(JSON.stringify(reviewsObj) == tempError) {
 			return (
-				<li className='list-group-item'>
-					<strong>No reviews for this toilet.</strong>
-				</li>
+
+					<div className="lead">Be the first to review this Toilet.</div>
+
 			)
 		} else if (reviewsObj) {
 			for(var prop in reviewsObj) {
@@ -27,8 +27,8 @@ class ToiletDetail extends Component{
 			return reviewsArray.map((review) => {
 				return (
 					<div>
-						<ul className='list-group'>
-							<li className='list-group-item' key={review.id}>
+						<ul className=''>
+							<li className='' key={review.id}>
 								<h5>Rating: {review.rating}/5</h5>
 								<p>Description: {review.description}</p>
 							</li>
@@ -45,7 +45,7 @@ class ToiletDetail extends Component{
 		if(this.props.auth){
 			return (
 				<Link to={'review_new'}>
-					<button type='submit' className='btn btn-primary'>Add a review</button>
+					<button type='submit' className='btn btn-submit'>Add a review</button>
 				</Link>
 			)
 		}
@@ -57,18 +57,29 @@ class ToiletDetail extends Component{
 		}
 
 		return (
-			<div>
-				<h3>Details</h3>
-				<ul className='list-group'>
-					<li className='list-group-item'>{this.props.toilet.name}</li>
-					<li className='list-group-item'>{this.props.toilet.description}</li>
-					<li className='list-group-item'>{this.props.toilet.address}</li>
-				</ul>
+			<div className="container">
+				<div className="row">
+					<div className="col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
+						<div className="panel-form">
+
+							<legend className="toilet-title">{this.props.toilet.name}</legend>
+
+
+							<div className='toilet-address'>{this.props.toilet.address}</div>
+							<div className='toilet-img'><img src="https://s-media-cache-ak0.pinimg.com/736x/29/11/dc/2911dcf723935b77cfc6aa5a1bb69f81.jpg" className="img-responsive"></img></div>
+							<div className='toilet-description'>{this.props.toilet.description}</div>
+
 				<div>
-				<h3>Reviews</h3>
+
+						<legend className="reviews-title">Reviews</legend>
+
+
 					{this.renderReviews()}
 				</div>
 				{this.renderLink()}
+				</div>
+			</div>
+			</div>
 			</div>
 		);
 	}

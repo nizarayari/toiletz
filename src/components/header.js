@@ -16,7 +16,7 @@ class Header extends Component{
 		return(	<div className="header-links">
 							<ul className="nav navbar-nav">
 							<li><Link to={'toiletz_new'}>Add Toilet</Link></li>
-							<li  onClick ={this.props.signoutUser.bind(this)} ><Link to={'/'}>Sign Up</Link></li>
+							<li  onClick ={this.props.signoutUser.bind(this)} ><Link to={'/'}>Log out</Link></li>
 							</ul>
 						</div>
 		);
@@ -43,12 +43,11 @@ class Header extends Component{
 			      <Link to={"/"}><a class="navbar-brand" href="#"><img alt="Brand" id="brand" src="../src/assets/toilet-logo-dark.png" /></a></Link>
 			    </div>
 
-			        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<div className="nav navbar-nav navbar-right">
 								{this.renderLinks()}
 								<SearchBar />
 
-													</div>
+
 				      </div>
 			      	</div>
 

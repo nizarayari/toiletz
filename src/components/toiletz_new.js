@@ -31,8 +31,14 @@ class ToiletzNew extends Component {
 		return (
 			<div className="top-margin">
 				<div className="container">
-					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-						<h3>Create a new Toilet</h3>
+					<div className="row">
+						<div className="col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
+					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}  className="form-horizontal panel-form">
+
+						<div id="legend">
+							<legend className="">Create a new Toilet</legend>
+						</div>
+
 						<div className={`form-group ${name.touched && name.invalid ? 'has-danger' : '' }`}>
 							<label> Name </label>
 							<input type="text" className='form-control' {...name}/>
@@ -57,11 +63,19 @@ class ToiletzNew extends Component {
 							</div>
 						</div>
 
-						<button type='submit' className='btn btn-success' >Submit</button>
-						<Link to='/'> <button className='btn btn-danger' type='submit'>
-						Cancel</button>
-						</Link>
+						<div className="form-group">
+							<button type='submit' className='btn btn-submit' >Submit</button>
+							<div className='cancel'>
+								<Link to='/' > <i className="fa fa-chevron-circle-left" aria-hidden="true"> </i><span  type='submit'>
+								Cancel</span></Link>
+							</div>
+						</div>
+
+
+
 					</form>
+				</div>
+			</div>
 				</div>
 			</div>
 

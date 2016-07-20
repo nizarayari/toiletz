@@ -52,7 +52,7 @@ export default class SimpleMap extends Component{
               obj['marker' + e] = true;
               this.setState(obj);
   }
-  
+
   onComponentDidMount() {
     this.props.toilets.map((toilet, index) => {
       var obj = {};
@@ -61,7 +61,7 @@ export default class SimpleMap extends Component{
       });
       this.setState({hide: false})
   }
-  
+
 
   render() {
 
@@ -82,7 +82,7 @@ export default class SimpleMap extends Component{
 
     return (
       <Gmaps
-        width={'1200px'}
+        width={'100%'}
         height={'600px'}
         lat={34.016484}
         lng={-118.496216}
@@ -90,7 +90,7 @@ export default class SimpleMap extends Component{
         loadingMessage={'Loading...'}
         params={{v: '3.exp', key: 'AIzaSyB85KqmtnH-PdxoaFTRZRWZJLI6H48oa-Q'}}
         onMapCreated={this.onMapCreated}>
-        
+
         {this.props.toilets.map((toilet, index) => {
               return (
                 <Marker
@@ -104,7 +104,7 @@ export default class SimpleMap extends Component{
                   />
 
               )
-            })} 
+            })}
       {this.props.toilets.map((toilet, index) => {
             if (!this.state['marker' + index]) {
               return (null);
@@ -134,9 +134,3 @@ function mapStateToProps(state){
 }
 
 export default connect (mapStateToProps)(SimpleMap);
-
-
-
-
-
-

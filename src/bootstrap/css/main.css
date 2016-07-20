@@ -4,9 +4,16 @@
 .wrapper {
 
 }
+.lead {
+  text-align: center;
+}
 a:hover {
   text-decoration: none;
 }
+
+/**************************************************/
+/***********       Navbar     *********************/
+/**************************************************/
 .topnav {
     font-size: 14px;
     background: rgba(235,235,235, .5);
@@ -14,8 +21,9 @@ a:hover {
 .navbar-default {
     background-color: transparent;
     border: none;
-
-}
+    height: 60px;
+    background: rgba(235,235,235,.5);
+  }
 #brand {
   width:100px;
   margin: 5px 0 0 10px;
@@ -28,6 +36,7 @@ a:hover {
 .navbar-form {
   float:right;
   margin-right:10px;
+  margin-top: 11px;
 }
 .header-links {
   float:left;
@@ -47,14 +56,6 @@ a:hover {
 
 
 }
-
-.intro-background-img {
-    background: url(../../assets/public-toilet.jpg) no-repeat center center;
-    background-size: cover;
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-}
 .navbar-default .navbar-nav > li > a {
     color: #181818;
     font-size: 1.1em;
@@ -63,6 +64,20 @@ a:hover {
     color: #47B9B9;
 
 }
+
+
+/**************************************************/
+/***********   Intro Landing  *********************/
+/**************************************************/
+
+.intro-background-img {
+    background: url(../../assets/public-toilet.jpg) no-repeat center center;
+    background-size: cover;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
 
 .main {
     display: table;
@@ -116,19 +131,49 @@ fa.fa-github.fa-fw {
 }
 
 .btn-submit {
-    color: #47B9B9;
-    background-color: white;
-    border: #47B9B9 2px solid;
-    width: 100%;
+  background-color: #47B9B9;
+  color: white;
+  width: 100%;
+  height: 45px;
+
+
 }
 .btn-submit:hover {
-      background-color: #47B9B9;
-      color: white;
+  color: #47B9B9;
+  background-color: white;
+  border: #47B9B9 2px solid;
+
+
+
 }
+.cancel {
+  margin-top:10px;
+}
+
+.cancel a {
+  color: #47B9B9;
+  font-size: 1.3em;
+
+}
+
+.fa.fa-chevron-circle-left {
+  color: #47B9B9;
+  margin-right:5px;
+
+}
+.fa.fa-chevron-circle-left {
+  color: #47B9B9;
+  margin-right:5px;
+
+}
+
 .controls a {
   color: #47B9B9;
   margin-left: 5px;
 
+}
+#legend legend{
+  font-size: 3em;
 }
 
 /**/
@@ -174,4 +219,35 @@ fa.fa-github.fa-fw {
     font-size:3em;
     font-family: 'Raleway', sans-serif;
     margin-bottom: 20px;
+
+}
+/**************************************************/
+/*********** Toilet show view *********************/
+/**************************************************/
+legend.toilet-title {
+  text-transform: capitalize;
+  font-size: 3em;
+  text-align: center;
+}
+
+legend.reviews-title {
+  margin-top: 2em;
+  font-size: 2em;
+}
+.toilet-address {
+  font-size: 1em;
+  font-weight: 200;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+.toilet-img {
+  max-width: 100%;
+}
+.toilet-img img{
+  max-height: 200px;
+  margin: 0 auto;
+}
+.toilet-description {
+  margin: 25px 0;
 }
