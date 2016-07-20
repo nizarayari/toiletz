@@ -31,7 +31,7 @@ onSubmit(props) {
 	    <div className="top-margin">
 			<div className="container">
 			  <div className="row">
-			  	<div className="col-md-6 col-sm-offset-3">
+			  	<div className="col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
 			          <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }   className="form-horizontal panel-form">
 			          	<fieldset>
 				            <div id="legend">

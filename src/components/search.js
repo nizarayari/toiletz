@@ -22,7 +22,7 @@ class SearchBar extends Component {
 
     render() {
 	    return (
-	      <form className="navbar-form navbar-center" role="search">
+	      <form className="navbar-form " role="search">
 	     	 <div className="form-group">
 		      <input
 		      	type="text"
