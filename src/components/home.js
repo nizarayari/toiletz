@@ -12,14 +12,13 @@ export default class Home extends Component{
 		return(
 			<div>
 				<GoogleMap />
-				<h3>Click on a toilet for more details!</h3>
-				<ToiletList/>  
+				<div className="home-header">
+				Click on toilet info card below to know more
+				</div>
+				<ToiletList/>
 
 			</div>
 		);
 
 	}
 }
-
-
-

@@ -6,7 +6,7 @@ import { SelectToilet } from '../actions/index';
 
 class ToiletList extends Component{
 
-	
+
 	renderList(){
 		console.log("inside renderList", this.props.toilets)
 		if(typeof this.props.toilets === "string"){
@@ -17,21 +17,23 @@ class ToiletList extends Component{
         			</div>
 			)
 		}
-		
+
 		return this.props.toilets.map((toilet, index) => {
-			return (	
-				<div 
+			return ( <div className="col-md-4 col-sm-6 col-xs-12 col-lg-3">
+				<div
+					className="toilet-info"
 					onClick={()=> this.props.selectToilet(toilet)}
 					style={{cursor:'pointer'}}
 					key={index}>
 					<div>
-						<Link to={'details'}><ul className='list-group'>
+						<Link  to={'details'}><ul className='list-group'>
 							<li className='list-group-item' key={toilet.id}>
-								<h5>Toilet Name: {toilet.name}</h5>
+								<h2> {toilet.name}</h2>
 								<strong>Toilet Description: {toilet.description}</strong>
 							</li>
 						</ul></Link>
 					</div>
+				  </div>
 				</div>
 			)
 		});
@@ -41,9 +43,13 @@ class ToiletList extends Component{
 		if(!this.props.toilets){
       		return null;
     	}
-   
+
 		return (
-				<div>{this.renderList()}</div>
+			<div className="container">
+				<div className="row">
+					<div>{this.renderList()}</div>
+				</div>
+			</div>
 			)
 	}
 }

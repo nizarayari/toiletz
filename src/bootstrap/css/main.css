@@ -1,0 +1,178 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+.wrapper {
+
+}
+a:hover {
+  text-decoration: none;
+}
+.topnav {
+    font-size: 14px;
+    background: rgba(235,235,235, .5);
+}
+.navbar-default {
+    background-color: transparent;
+    border: none;
+
+}
+#brand {
+  width:100px;
+  margin: 5px 0 0 10px;
+}
+/*.btn-default {
+    color: black;
+    background-color: #ddd;
+
+}*/
+.navbar-form {
+  float:right;
+  margin-right:10px;
+}
+.header-links {
+  float:left;
+  margin-top:5px;
+}
+.btn-search {
+  background: white;
+    border:solid 2px #47B9B9;
+    color: #47B9B9;
+    margin-left:5px;
+
+}
+.btn-search:hover {
+    background: #47B9B9;
+    color: white;
+    border:solid 2px #47B9B9;
+
+
+}
+
+.intro-background-img {
+    background: url(../../assets/public-toilet.jpg) no-repeat center center;
+    background-size: cover;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #181818;
+    font-size: 1.1em;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #47B9B9;
+
+}
+
+.main {
+    display: table;
+    margin: 0 auto;
+    min-height: 100vh;
+
+}
+.intro-message {
+  color:white;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.intro-message  .intro-panel > h1{
+font-size:17em;
+text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+padding-bottom: -10px;
+
+
+}
+.intro-panel > h3 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.intro-panel {
+  /*background: rgba(235,235,235, .6);*/
+  padding:10px 40px;
+  border-radius: 5px;
+}
+.divider {
+  border-top: 1px solid white;
+
+}
+.intro-secondary {
+  max-height:300px;
+}
+
+.btn-default {
+    background: #47B9B9;
+    color: white;
+    border:solid 2px #47B9B9;
+}
+.btn-default:hover {
+  border:solid 2px #47B9B9;
+  color: #47B9B9;
+
+}
+fa.fa-github.fa-fw {
+  color: #47B9B9;
+}
+
+.btn-submit {
+    color: #47B9B9;
+    background-color: white;
+    border: #47B9B9 2px solid;
+    width: 100%;
+}
+.btn-submit:hover {
+      background-color: #47B9B9;
+      color: white;
+}
+.controls a {
+  color: #47B9B9;
+  margin-left: 5px;
+
+}
+
+/**/
+
+/*.toilet-info {
+  background: #47B9B9;
+  color: white;
+  border:solid 2px #47B9B9;
+}*/
+
+.panel-form {
+  padding:40px;
+  border: 3px solid #47B9B9;
+  border-radius: 5px;
+}
+
+
+.list-group-item {
+    background-color: #ffffff;
+    border: 2px solid #47B9B9;
+    color: black;
+    text-align: center;
+    text-transform: capitalize;
+    height:200px;
+
+
+
+}
+.list-group-item:hover {
+  background-color: #47B9B9;
+  color: white;
+
+}
+
+
+.home-header {
+    background: black;
+    text-align: center;
+
+    padding: 20px;
+    color: white;
+    font-weight:100;
+    font-size:3em;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 20px;
+
+}

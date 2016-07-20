@@ -29,13 +29,13 @@ class ToiletDetail extends Component{
 					<div>
 						<ul className='list-group'>
 							<li className='list-group-item' key={review.id}>
-								<h5>Toilet Rating: {review.rating}/5</h5>
-								<p>Toilet Description: {review.description}</p>
+								<h5>Rating: {review.rating}/5</h5>
+								<p>Description: {review.description}</p>
 							</li>
 						</ul>
 					</div>
 				);
-			})	
+			})
 		} else {
 			console.log("SOMETHING WENT WRONG WITH REVIEWS IN TOILET_DETAILS");
 		}
@@ -65,7 +65,7 @@ class ToiletDetail extends Component{
 					<li className='list-group-item'>{this.props.toilet.address}</li>
 				</ul>
 				<div>
-				<h3>Reviews</h3> 
+				<h3>Reviews</h3>
 					{this.renderReviews()}
 				</div>
 				{this.renderLink()}

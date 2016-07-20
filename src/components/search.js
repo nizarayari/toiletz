@@ -13,7 +13,7 @@ class SearchBar extends Component {
 
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
-	
+
 
 	onFormSubmit(event) {
 		this.props.search(this.state.term);
@@ -24,8 +24,8 @@ class SearchBar extends Component {
 	    return (
 	      <form className="navbar-form navbar-center" role="search">
 	     	 <div className="form-group">
-		      <input 
-		      	type="text" 
+		      <input
+		      	type="text"
 		      	className="form-control"
 		      	placeholder="Find a Toilet!"
 		      	value={this.state.term}
@@ -34,7 +34,7 @@ class SearchBar extends Component {
 		     </div>
 		      <Link to={'home'}>
 			      <span className="header-btn">
-			      	<button type="submit" className="btn btn-default" onClick={this.onFormSubmit}>Submit</button>
+			      	<button type="submit" className="btn btn-search" onClick={this.onFormSubmit}><i className="fa fa-search" aria-hidden="true"></i></button>
 			      </span>
 		      </Link>
 	      </form>

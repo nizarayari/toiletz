@@ -12,7 +12,7 @@ class SignIn extends Component {
 onSubmit({ email, password}) {
 
 		this.props.login({ email, password})
-			
+
 	}
 
 renderAlert(){
@@ -26,7 +26,7 @@ renderAlert(){
 }
 
 
-	
+
     render() {
     	const { fields:{email, password}, handleSubmit } = this.props
 
@@ -35,8 +35,8 @@ renderAlert(){
 	    <div className="top-margin">
 			<div className="container">
 			  <div className="row">
-			  	<div className="col-md-6">
-			          <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }   className="form-horizontal">
+			  	<div className="col-md-6 col-sm-offset-3">
+			          <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }   className="form-horizontal panel-form">
 			          	<fieldset>
 				            <div id="legend">
 				              <legend className="">Sign In</legend>
@@ -55,13 +55,13 @@ renderAlert(){
 								</div>
 				              </div>
 				            </div>
-				         
+
 				            <div className="control-group">
 				              <label className="control-label">Password</label>
 				              <div className="controls">
 				                <input {...password}
 				                	className="form-control input-lg"
-			    					type="password" 
+			    					type="password"
 			    					placeholder="type your password"
 			    				/>
 			    				<div className='text-help' style={{color:'red'}}>
@@ -74,12 +74,12 @@ renderAlert(){
 				              <div className="controls">
 				              	<p>Don't have an account?<Link to={'sign_up'}><strong>Sign Up</strong></Link></p>
 				                {this.renderAlert()}
-				                <button className="btn btn-success"  type="submit">Login</button>
+				                <button className="btn btn-submit"  type="submit">Login</button>
 				              </div>
 				            </div>
 			         	</fieldset>
 			        </form>
-			    </div> 
+			    </div>
 			  </div>
 			</div>
 		</div>

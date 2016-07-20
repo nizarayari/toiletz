@@ -13,43 +13,23 @@ class Header extends Component{
 		if (this.props.auth){
 			//show a link to sign out
 			//show a link to add toilet
-		return(	<div className="nav navbar-nav navbar-right">
-			<span className="header-btn">
-				<Link to={'toiletz_new'}>
-					<span className="header-btn">
-						<button className="btn btn-default">Add Toilet</button>
-					</span>
-				</Link>
-			</span>
-			<span className="header-btn">
-				<Link to={'/'}>
-					<span className="header-btn">
-						<button onClick ={this.props.signoutUser.bind(this)} className="btn btn-default">Log Out</button>
-					</span>
-				</Link>
-			</span>
-			</div>
+		return(	<div className="header-links">
+							<ul className="nav navbar-nav">
+							<li><Link to={'toiletz_new'}>Add Toilet</Link></li>
+							<li  onClick ={this.props.signoutUser.bind(this)} ><Link to={'/'}>Sign Up</Link></li>
+							</ul>
+						</div>
 		);
 		} else {
 			//show a link to sign in or sign up
-			return (<div className="nav navbar-nav navbar-right">
-			<span className="header-btn">
-				<Link to={'sign_in'}>
-					<span>
-						<button className="btn btn-default">Sign In</button>
-					</span>
-				</Link>
-			</span>
+			return ( <div className="header-links">
+			<ul className="nav navbar-nav">
+			<li><Link to={'sign_in'}>Sign in</Link></li>
+			<li><Link to={'sign_up'}>Sign Up</Link></li>
+			</ul>
+		</div>
 
-			<span>
-				<Link to={'sign_up'}>
-					<span className="header-btn">
-						<button className="btn btn-default">Sign Up</button>
-					</span>
-				</Link>
-			</span>
-			</div>
-			)			
+			)
 		}
 	}
 
@@ -58,18 +38,20 @@ class Header extends Component{
 
 		return(
 			<nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-			  <div className="container topnav">
+			  <div className="topnav">
 			    <div className="navbar-header">
-			      <Link to={"/"}><h2>Toiletz</h2></Link>
+			      <Link to={"/"}><a class="navbar-brand" href="#"><img alt="Brand" id="brand" src="../src/assets/toilet-logo-dark.png" /></a></Link>
 			    </div>
-		       		<div className="nav navbar-nav navbar-center">
-		          		<SearchBar />
-		          	</div>
+
 			        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						{this.renderLinks()}
+							<div className="nav navbar-nav navbar-right">
+								{this.renderLinks()}
+								<SearchBar />
+
+													</div>
 				      </div>
 			      	</div>
-			   
+
 			</nav>
 		);
 
@@ -81,6 +63,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps,actions)(Header);
-
-
-

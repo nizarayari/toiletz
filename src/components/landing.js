@@ -11,18 +11,17 @@ export default class Index extends Component{
 				<div className="intro-header">
 			        <div className="container">
 			            <div className="row">
-			                <div className="col-lg-12">
+												<div className="main">
 			                    <div className="intro-message">
+														<div className="intro-panel">
 			                        <h1>Toiletz</h1>
 			                        <h3>Becasuse we all gotta go when we gotta go</h3>
-			                        <hr className="intro-divider"></hr>
+			                        <hr className="divider"></hr>
 			                        <h4 className="text-default">Get the source code</h4>
-			                        <ul className="list-inline intro-social-buttons">
-			                            <li>
-			                                <a href="https://github.com/toiletz/toiletz" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span className="network-name">Github</span></a>
-			                            </li>
-			                        </ul>
-			                    </div>
+                                <a href="https://github.com/toiletz/toiletz" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span className="network-name">Github</span></a>
+															</div>
+														</div>
+
 			                </div>
 			            </div>
 			        </div>
@@ -39,7 +38,7 @@ export default class Index extends Component{
 		                    <p className="lead">First, enter the address you need to find releif at in the searchbar above. You can't miss it, it says "Find a toilet!"</p>
 		                </div>
 		                <div className="col-lg-5 col-lg-offset-2 col-sm-6">
-		                    <img className="img-responsive" src="../assets/Number_1.png" alt=""></img>
+		                    <img className="img-responsive intro-secondary" src="src/assets/sky-high.jpg" alt=""></img>
 		                </div>
 		            </div>
 		        </div>
@@ -55,7 +54,7 @@ export default class Index extends Component{
 		                    <p className="lead">Next, check the map and toilet list below it to find the best place for you. Once found simply click on a toilet!</p>
 		                </div>
 		                <div className="col-lg-5 col-sm-pull-6  col-sm-6">
-		                    <img className="img-responsive" src="../assets/Number_2.png" alt=""></img>
+		                    <img className="img-responsive intro-secondary" src="src/assets/tv-bath.jpg" alt=""></img>
 		                </div>
 		            </div>
 		        </div>
