@@ -88,43 +88,6 @@ module.exports = {
       res.end("Received DELETE at /api/toilet/location");
     }
   },
-  // '/info': {
-    // get: function(req, res) {
-    //   console.log('get at /info');
-    //   res.end("Received GET at /api/toilet/info")
-    // },
-    // post: function(req, res) {
-    //   console.log('post at /info');
-    //   var currentToilet = req.body;
-    //   var currentLocation = `${currentToilet.latitude}, ${currentToilet.longitude}`;
-    //   console.log('currentToilet', currentToilet);
-    //   console.log('params:', 'key:', API_KEY, 'location:', currentLocation);
-    //   axios.get({
-    //     url: 'https://maps.googleapis.com/maps/api/streetview',
-    //     method: 'get',
-    //     params: {
-    //       key: API_KEY,
-    //       size:'400x400',
-    //       location: currentLocation
-    //     }
-    //   }).then(function(response) {
-    //     console.log("Success on GET to Google Maps");
-    //     res.send(response);
-    //   }).catch(function(err) {
-    //     console.log("Error on GET to Google Maps");
-    //     res.send(err);
-    //   });
-    //
-    // },
-  //   put: function(req, res) {
-  //     console.log('put at /info');
-  //     res.end("Received PUT at /api/toilet/info")
-  //   },
-  //   delete: function(req, res) {
-  //     console.log('delete at /info');
-  //     res.end("Received DELETE at /api/toilet/info")
-  //   }
-  // },
   '/:toiletId': {
     get: function(req,res) {
       console.log("Received GET at /api/toilet/:toiletId");
