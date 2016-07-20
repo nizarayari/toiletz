@@ -15,13 +15,15 @@ export const CREATE_TOILET = 'CREATE_TOILET';
 export const CREATE_REVIEW = 'CREATE_REVIEW';
 
 export function search(endpoint) {
-	return convertAddress(endpoint)
+  let params;
+  return convertAddress(endpoint)
 		.then(function(payload) {
-			let params = querystring.stringify({
+			params = querystring.stringify({
 	        latitude: payload.data.latitude,
 			    longitude: payload.data.longitude,
 			    address: payload.data.address
 			});
+
 			const request = axios.get('./api/toilet/', params)
 					return {
 						type: FETCH_TOILETZ,
