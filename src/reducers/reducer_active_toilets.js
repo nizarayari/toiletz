@@ -8,6 +8,11 @@ switch(action.type){
 		return action.payload;
   case 'TOILET_STREETVIEW':
     return Object.assign({}, state, {streetView: action.payload});
+  case 'TOILET_MAP_CURRENT':
+    return Object.assign({}, state, {currentOnMap: action.payload});
 }
 return state;
 }
+
+
+//this.state.activeToilet.currentOnMap = obj with toilet details

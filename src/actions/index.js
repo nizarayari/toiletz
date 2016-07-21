@@ -75,6 +75,25 @@ export function SelectToilet(toilet){
 	};
 }
 
+export function selectToiletFromMap(toilet) {
+  console.log('B \n', 'in selectToiletFromMap, toilet is:', toilet)
+  let latlng = `${toilet.latitude},${toilet.longitude}`;
+  return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+    params: {
+      key: API_KEY,
+      latlng: latlng
+    }
+  }).then( (response) => {
+    console.log('address response to geocoding:', response.data.results[0].formatted_address);
+    const currentToilet = Object.assign({}, toilet, {address: response.data.results[0].formatted_address})
+    console.log('C\n', '..then currentToilet passed to reducer', currentToilet);
+    return {
+      type: 'TOILET_MAP_CURRENT',
+      payload: currentToilet
+    }
+  })
+}
+
 export function getReviews (toiletId){
 	//SelectToilet is an ActionCreator, it needs to return an action,
 	// an object with a type property.
