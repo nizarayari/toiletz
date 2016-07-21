@@ -3,8 +3,9 @@ import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import axios from 'axios';
-// import { getStreetView } from '../actions/index.js';
-//import API_KEY from '../../keys.js';
+import { selectToiletFromMap } from '../actions/index.js';
+import { bindActionCreators } from 'redux';
+import API_KEY from '../../keys.js';
 
 import {connect} from 'react-redux';
 
@@ -14,7 +15,7 @@ export default class SimpleMap extends Component{
 
   constructor(props) {
     super(props);
-    this.state = { hide: true };
+    this.state = { hide: true, current: null, currentAddress: null };
   }
 
   onMapCreated(map) {
@@ -34,57 +35,33 @@ export default class SimpleMap extends Component{
   }
 
   onCloseClick(index) {
-    console.log('state before:', this.state);
-    console.log('onCloseClick');
-    var obj = {};
-              obj['marker' + index] = false;
-              this.setState(obj);
-    console.log('state after:', this.state);
+    this.setState({
+      ['marker' + index]: false
+    });
   }
 
   onClick(e) {
-    //const dataURI = new Datauri();
-    // let currentToilet = this.props.toilets[e];
-    // let currentLocation = `${currentToilet.latitude}, ${currentToilet.longitude}`;
-    // console.log('currentToilet:', currentToilet);
-    // console.log('params:', 'key:', API_KEY, 'location:', currentLocation);
-    // axios({
-    //   url: 'https://maps.googleapis.com/maps/api/streetview',
-    //   method: 'get',
-    //   params: {
-    //     key: API_KEY,
-    //     size:'400x400',
-    //     location: currentLocation
-    //   },
-    //   transformResponse: [ (data) => {
-    //     return data;
-    //   }]
-    // }).then( (data) => {
-    //   console.log("data from pic request:", data);
-    //   //dataURI.format('.jpg', data);
-    //   let b64Response = btoa(unescape(encodeURIComponent(data.data)));
-    //   let dataURI = 'data:img/jpeg;base64,'+b64Response;
-    //   console.log('dataURI:', dataURI);
-    //   console.log('e',e)
-    //   window.localStorage.setItem('dataURI', dataURI);
-    //   console.log('streetview:', localStorage.getItem('dataURI'));
-      this.props.toilets.map((toilet, index) => {
-        var obj = {};
-        obj['marker' + index] = false;
-        this.setState(obj);
-        console.log('this.state in toilets.map:', this.state)
-      });
-      var obj = {};
-      obj['marker' + e] = true;
-      this.setState(obj);
-    // }).catch(function(err) {
-    //   console.log('ERROR ERROR', err);
-    // });
+    let curr = this.state.current;
+    if (curr) this.setState({ ['marker' + curr]: false });
 
+    console.log('A \n','onClick, selected toilet is:', this.props.toilets[e]);
+    this.props.selectToiletFromMap(this.props.toilets[e])
+    .then( (data) => {
+      console.log('D \n', ' then, data .......is:', data);
+      this.setState({
+        ['marker' + e]: true,
+        currentAddress: data.payload.address
+      })
+
+    })
+    .catch( (err) => {
+      console.log('error:', err);
+    });
   }
 
+
   renderMarkers() {
-    console.log('mapping markers...', this.props.toilets);
+    console.log('E \n','mapping markers...', this.props.toilets);
     return this.props.toilets.map((toilet, index) => {
           return (
             <Marker
@@ -101,20 +78,21 @@ export default class SimpleMap extends Component{
   }
 
   renderInfoWindows() {
-    console.log('inside renderInfoWindows', this.props.toilets);
+    console.log('inside renderInfoWindows', this.state.currentAddress);
     return this.props.toilets.map((toilet, index) => {
           if (!this.state['marker' + index]) {
             return (null);
           } else {
-            let loc = toilet.address;
-            let url = `https://maps.googleapis.com/maps/api/streetview?size=400x200&location=${loc}&pitch=-0.90`
+            let loc = `${toilet.latitude},${toilet.longitude}`;
+            let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${loc}&pitch=-0.90&key=${API_KEY.maps}`
             return (
               <InfoWindow
+                style={{'border':'1px black solid'}}
                 className='testing'
                 key={index}
                 lat={toilet.latitude}
                 lng={toilet.longitude}
-                content={'<img src="' + url + '" /><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div>' }
+                content={'<img src="' + url + '" style="border:1px black solid"/><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div>' }
                 onCloseClick={this.onCloseClick.bind(this, index)}
               />
             )
@@ -124,11 +102,9 @@ export default class SimpleMap extends Component{
 
 
   render() {
-
     if(!this.props.toilets){
       return null;
     }
-
     let markers = this.renderMarkers();
     let infoWindows = this.renderInfoWindows();
     if(typeof this.props.toilets === "string"){
@@ -139,9 +115,14 @@ export default class SimpleMap extends Component{
         </div>
       )
     }
-    console.log("Gmap", this.props.toilets)
 
     return (
+        // let lat = ;
+        //lng = ;
+        // if(this.state.current) {
+        //
+        // }
+
         <Gmaps
           width={'1200px'}
           height={'600px'}
@@ -157,7 +138,6 @@ export default class SimpleMap extends Component{
         </Gmaps>
     );
   }
-
 };
 
 
@@ -167,5 +147,9 @@ function mapStateToProps(state){
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectToiletFromMap }, dispatch);
+}
 
-export default connect (mapStateToProps)(SimpleMap);
+
+export default connect (mapStateToProps, mapDispatchToProps)(SimpleMap);
