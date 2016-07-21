@@ -34,6 +34,7 @@ Toilet.findToiletsInRadius = function(lat, long) {
   return db('toiletz').whereBetween('latitude', [lat - rad, lat + rad])
   .andWhereBetween('longitude', [long - rad, long + rad])
     .then(function (rows) {
+      console.log('rows in findToilets in radius', rows)
       return rows;
     });
 };
@@ -44,6 +45,6 @@ Toilet.createToilet = function(attr) {
       .then(function(result) {
         attr.id = result[0];
         resolve(attr);
-      });    
+      });
   });
 };

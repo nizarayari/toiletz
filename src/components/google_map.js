@@ -42,20 +42,17 @@ export default class SimpleMap extends Component{
   }
 
   onClick(e) {
-    console.log('onClick', this.state)
     let curr = this.state.current;
-    if (curr) this.setState({ ['marker' + curr]: false, current: null });
-
-    console.log('A \n','onClick, selected toilet is:', this.props.toilets[e]);
+    if (curr) {
+      this.setState({ ['marker' + curr]: false, current: null });
+    }
     this.props.selectToiletFromMap(this.props.toilets[e])
     .then( (data) => {
-      console.log('D \n', ' then, data .......is:', data);
       this.setState({
         ['marker' + e]: true,
         current: e,
         currentAddress: data.payload.address
       })
-
     })
     .catch( (err) => {
       console.log('error:', err);
@@ -64,43 +61,42 @@ export default class SimpleMap extends Component{
 
 
   renderMarkers() {
-    console.log('E \n','mapping markers...', this.props.toilets);
     return this.props.toilets.map((toilet, index) => {
-          return (
-            <Marker
-              key={index}
-              lat={toilet.latitude}
-              lng={toilet.longitude}
-              title={toilet.description}
-              draggable={false}
-              icon = {image}
-              onClick={this.onClick.bind(this, index)}
-            />
-          )
+      return (
+        <Marker
+          key={index}
+          lat={toilet.latitude}
+          lng={toilet.longitude}
+          title={toilet.description}
+          draggable={false}
+          icon = {image}
+          onClick={this.onClick.bind(this, index)}
+        />
+      )
     })
   }
 
   renderInfoWindows() {
-    console.log('inside renderInfoWindows', this.state.currentAddress);
     return this.props.toilets.map((toilet, index) => {
-          if (!this.state['marker' + index]) {
-            return (null);
-          } else {
-            let loc = `${toilet.latitude},${toilet.longitude}`;
-            let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${loc}&pitch=-0.90&key=${API_KEY.maps}`
-            return (
-              <InfoWindow
-                style={{'border':'1px black solid'}}
-                className='testing'
-                key={index}
-                lat={toilet.latitude}
-                lng={toilet.longitude}
-                content={'<img src="' + url + '" style="border:1px black solid"/><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div>' }
-                onCloseClick={this.onCloseClick.bind(this, index)}
-              />
-            )
-          }
-      })
+      if (!this.state['marker' + index]) {
+        return (null);
+      } else {
+        let addy = toilet.address;
+        let loc = `${toilet.latitude},${toilet.longitude}`;
+        let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${addy}&pitch=-0.90&key=${API_KEY.maps}`
+        return (
+          <InfoWindow
+            style={{'border':'1px black solid'}}
+            className='testing'
+            key={index}
+            lat={toilet.latitude}
+            lng={toilet.longitude}
+            content={'<img src="' + url + '" style="border:1px black solid"/><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div>' }
+            onCloseClick={this.onCloseClick.bind(this, index)}
+          />
+        )
+      }
+    });
   }
 
 
