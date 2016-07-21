@@ -17,28 +17,56 @@ export const CREATE_REVIEW = 'CREATE_REVIEW';
 export function search(endpoint) {
   let params;
   return convertAddress(endpoint)
-		.then(function(payload) {
-			params = querystring.stringify({
-	        latitude: payload.data.latitude,
-			    longitude: payload.data.longitude,
-			    address: payload.data.address
-			});
+		.then(function(response) {
+      console.log('response to convertAddress:', response);
+      console.log('response to convertAddress, latitude:', response.data.latitude);
+      console.log('response to convertAddress, longitude:', response.data.longitude);
+      return axios.post('./api/toilet/location', {
+          latitude: response.data.latitude,
+          longitude: response.data.longitude,
+          address: response.data.address
+        });
+      })
+      .then (function(response) {
+        return {
+          type: FETCH_TOILETZ,
+          payload: response
+          };
+        })
+    		.catch(function(response) {
+    			console.log("ENTER A VALID LOCATION")
+    			return {
+    				type: FETCH_TOILETZ,
+    				payload: "ENTER A VALID LOCATION"
+    			};
+    		});
 
-			const request = axios.get('./api/toilet/', params)
-					return {
-						type: FETCH_TOILETZ,
-						payload: request
-					};
-
-		})
-		.catch(function(response) {
-			console.log("ENTER A VALID LOCATION")
-			return {
-						type: FETCH_TOILETZ,
-						payload: "ENTER A VALID LOCATION"
-					};
-		})
 }
+// export function search(endpoint) {
+//   let params;
+//   return convertAddress(endpoint)
+// 		.then(function(payload) {
+// 			params = querystring.stringify({
+// 	        latitude: payload.data.latitude,
+// 			    longitude: payload.data.longitude,
+// 			    address: payload.data.address
+// 			});
+//
+// 			const request = axios.get('./api/toilet/', params)
+// 					return {
+// 						type: FETCH_TOILETZ,
+// 						payload: request
+// 					};
+//
+// 		})
+// 		.catch(function(response) {
+// 			console.log("ENTER A VALID LOCATION")
+// 			return {
+// 						type: FETCH_TOILETZ,
+// 						payload: "ENTER A VALID LOCATION"
+// 					};
+// 		})
+// }
 
 export function convertAddress(address) {
 	return new Promise(function(resolve, reject) {
@@ -76,7 +104,6 @@ export function SelectToilet(toilet){
 }
 
 export function selectToiletFromMap(toilet) {
-  console.log('B \n', 'in selectToiletFromMap, toilet is:', toilet)
   let latlng = `${toilet.latitude},${toilet.longitude}`;
   return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
     params: {
@@ -84,9 +111,7 @@ export function selectToiletFromMap(toilet) {
       latlng: latlng
     }
   }).then( (response) => {
-    console.log('address response to geocoding:', response.data.results[0].formatted_address);
     const currentToilet = Object.assign({}, toilet, {address: response.data.results[0].formatted_address})
-    console.log('C\n', '..then currentToilet passed to reducer', currentToilet);
     return {
       type: 'TOILET_MAP_CURRENT',
       payload: currentToilet
