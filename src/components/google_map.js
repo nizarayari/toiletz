@@ -36,13 +36,15 @@ export default class SimpleMap extends Component{
 
   onCloseClick(index) {
     this.setState({
-      ['marker' + index]: false
+      ['marker' + index]: false,
+      current: null
     });
   }
 
   onClick(e) {
+    console.log('onClick', this.state)
     let curr = this.state.current;
-    if (curr) this.setState({ ['marker' + curr]: false });
+    if (curr) this.setState({ ['marker' + curr]: false, current: null });
 
     console.log('A \n','onClick, selected toilet is:', this.props.toilets[e]);
     this.props.selectToiletFromMap(this.props.toilets[e])
@@ -50,6 +52,7 @@ export default class SimpleMap extends Component{
       console.log('D \n', ' then, data .......is:', data);
       this.setState({
         ['marker' + e]: true,
+        current: e,
         currentAddress: data.payload.address
       })
 
