@@ -40,7 +40,7 @@ class Header extends Component{
 			<nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
 			  <div className="topnav">
 			    <div className="navbar-header">
-			      <Link to={"/"}><a class="navbar-brand" href="#"><img alt="Brand" id="brand" src="../src/assets/toilet-logo-dark.png" /></a></Link>
+			      <Link to={"/"} className="navbar-brand"><img alt="Brand" id="brand" src="../src/assets/toilet-logo-dark.png" /></Link>
 			    </div>
 
 							<div className="nav navbar-nav navbar-right">

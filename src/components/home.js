@@ -16,7 +16,6 @@ export default class Home extends Component{
 				Click on toilet info card below to know more
 				</div>
 				<ToiletList/>
-
 			</div>
 		);
 

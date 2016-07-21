@@ -35,7 +35,7 @@ export default class Index extends Component{
 		                    <hr className="section-heading-spacer"></hr>
 		                    <div className="clearfix"></div>
 		                    <h2 className="section-heading">Sometimes you can't wait...</h2>
-		                    <p className="lead">First, enter the address you need to find releif at in the searchbar above. You can't miss it, it says "Find a toilet!"</p>
+		                    <p className="lead">First, enter the address you need to find relief at in the searchbar above. You can't miss it, it says "Find a toilet!"</p>
 		                </div>
 		                <div className="col-lg-5 col-lg-offset-2 col-sm-6">
 		                    <img className="img-responsive intro-secondary" src="src/assets/sky-high.jpg" alt=""></img>

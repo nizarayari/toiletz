@@ -1,6 +1,8 @@
 var Toilet = require('../models/toiletModel.js');
 var User = require('../models/userModel.js');
 var url = require('url');
+var axios = require('axios');
+// var API_KEY = require('../../keys.js');
 
 module.exports = {
   '/': {
@@ -35,7 +37,7 @@ module.exports = {
       Toilet.findToiletByLocation(newToilet.latitude, newToilet.longitude)
         .then(function(toilet) {
           if (toilet) {
-            console.log("toilet already added"); 
+            console.log("toilet already added");
           } else {
             console.log("toilet does not exist");
 
@@ -57,7 +59,7 @@ module.exports = {
       res.end("Received DELETE at /api/toilet/");
     }
   },
-  '/location/': {
+  '/location': {
     get: function(req,res) {
       console.log("Received GET at /api/toilet/location");
     },
