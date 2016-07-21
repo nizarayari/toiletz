@@ -13,27 +13,39 @@ export const FETCH_REVIEWS = 'FETCH_REVIEWS';
 export const SELECT_TOILETZ = 'SELECT_TOILETZ';
 export const CREATE_TOILET = 'CREATE_TOILET';
 export const CREATE_REVIEW = 'CREATE_REVIEW';
+export const SEARCH_CENTER = 'SEARCH_CENTER';
 
 export function search(endpoint) {
-  let params;
+  let lat;
+  let lng;
   return convertAddress(endpoint)
 		.then(function(response) {
       console.log('response to convertAddress:', response);
-      console.log('response to convertAddress, latitude:', response.data.latitude);
-      console.log('response to convertAddress, longitude:', response.data.longitude);
+      console.log('response to convertAddress, latitude:', response.latitude);
+      console.log('response to convertAddress, longitude:', response.longitude);
+      lat = response.latitude;
+      lng = response.longitude;
+      //setSearchCenter(dispatch, lat, lng);
       return axios.post('./api/toilet/location', {
-          latitude: response.data.latitude,
-          longitude: response.data.longitude,
-          address: response.data.address
+          latitude: response.latitude,
+          longitude: response.longitude,
+          address: response.address
         });
       })
-      .then (function(response) {
-        return {
-          type: FETCH_TOILETZ,
-          payload: response
-          };
+      .then ( (response) => {
+        console.log('response in search:', response);
+        return function(dispatch) {
+          dispatch({
+            type: FETCH_TOILETZ,
+            payload: response
+          });
+          dispatch({
+            type: SEARCH_CENTER,
+            payload: {latitude: lat, longitude: lng}
+          });
+          }
         })
-    		.catch(function(response) {
+    		.catch( (response) => {
     			console.log("ENTER A VALID LOCATION")
     			return {
     				type: FETCH_TOILETZ,
@@ -42,53 +54,53 @@ export function search(endpoint) {
     		});
 
 }
-// export function search(endpoint) {
-//   let params;
-//   return convertAddress(endpoint)
-// 		.then(function(payload) {
-// 			params = querystring.stringify({
-// 	        latitude: payload.data.latitude,
-// 			    longitude: payload.data.longitude,
-// 			    address: payload.data.address
-// 			});
-//
-// 			const request = axios.get('./api/toilet/', params)
-// 					return {
-// 						type: FETCH_TOILETZ,
-// 						payload: request
-// 					};
-//
-// 		})
-// 		.catch(function(response) {
-// 			console.log("ENTER A VALID LOCATION")
-// 			return {
-// 						type: FETCH_TOILETZ,
-// 						payload: "ENTER A VALID LOCATION"
-// 					};
-// 		})
-// }
 
 export function convertAddress(address) {
-	return new Promise(function(resolve, reject) {
 	let response;
-	let coords;
-	resolve(axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + API_KEY)
+	return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + API_KEY)
 		.then(function(payload) {
 			//console.log(payload, "PAYLOAD (GOOGLE API) IN ACTIONS, CONVERTADDRESS");
 			response = payload.data.results[0].geometry.location;
-			coords = {
+			return Promise.resolve({
 				latitude: response.lat,
-			    longitude: response.lng,
-			    address: address
-			};
-			return {
-				data: coords
-			}
-		}))
+			  longitude: response.lng,
+			  address: address
+			});
+
+		})
 		.catch(function(response) {
 			console.log(response, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
 		})
-	})
+}
+// export function convertAddress(address) {
+// 	return new Promise(function(resolve, reject) {
+// 	let response;
+// 	let coords;
+// 	resolve(axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + API_KEY)
+// 		.then(function(payload) {
+// 			//console.log(payload, "PAYLOAD (GOOGLE API) IN ACTIONS, CONVERTADDRESS");
+// 			response = payload.data.results[0].geometry.location;
+// 			coords = {
+// 				latitude: response.lat,
+// 			    longitude: response.lng,
+// 			    address: address
+// 			};
+// 			return {
+// 				data: coords
+// 			}
+// 		}))
+// 		.catch(function(response) {
+// 			console.log(response, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
+// 		})
+// 	})
+// }
+
+export function setSearchCenter(dispatch, lat, lng) {
+  console.log('payload=', {latitude: lat, longitude: lng})
+  dispatch( {
+    type: SEACH_CENTER,
+    payload: {latitude: lat, longitude: lng}
+  });
 }
 
 export function SelectToilet(toilet){

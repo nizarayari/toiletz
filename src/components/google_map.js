@@ -101,6 +101,7 @@ export default class SimpleMap extends Component{
 
 
   render() {
+    console.log('origin:', this.props.origin);
     if(!this.props.toilets){
       return null;
     }
@@ -116,17 +117,11 @@ export default class SimpleMap extends Component{
     }
 
     return (
-        // let lat = ;
-        //lng = ;
-        // if(this.state.current) {
-        //
-        // }
-
         <Gmaps
           width={'1200px'}
           height={'600px'}
-          lat={34.016484}
-          lng={-118.496216}
+          lat={this.props.origin.latitude}
+          lng={this.props.origin.longitude}
           zoom={13}
           loadingMessage={'Loading...'}
           params={{v: '3.exp', key: 'AIzaSyB85KqmtnH-PdxoaFTRZRWZJLI6H48oa-Q'}}
@@ -142,7 +137,8 @@ export default class SimpleMap extends Component{
 
 function mapStateToProps(state){
   return{
-    toilets:state.toilets //from rootReducer (index.js in reducers)
+    toilets:state.toilets,
+    origin: state.search //from rootReducer (index.js in reducers)
   }
 }
 

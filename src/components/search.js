@@ -14,7 +14,6 @@ class SearchBar extends Component {
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
-
 	onFormSubmit(event) {
 		this.props.search(this.state.term);
 		this.setState({ term: "" });
