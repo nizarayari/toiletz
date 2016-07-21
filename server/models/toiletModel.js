@@ -35,7 +35,9 @@ Toilet.findToiletsInRadius = function(lat, long) {
   .andWhereBetween('longitude', [long - rad, long + rad])
     .then(function (rows) {
       console.log('rows in findToilets in radius', rows)
-      return rows;
+      return rows.filter(function(row) {
+        return rad >= Math.sqrt( Math.pow((lat - row.latitude), 2) + Math.pow((long - row.longitude), 2) );
+      });
     });
 };
 
