@@ -20,12 +20,9 @@ export function search(endpoint) {
   let lng;
   return convertAddress(endpoint)
 		.then(function(response) {
-      console.log('response to convertAddress:', response);
-      console.log('response to convertAddress, latitude:', response.latitude);
-      console.log('response to convertAddress, longitude:', response.longitude);
       lat = response.latitude;
       lng = response.longitude;
-      //setSearchCenter(dispatch, lat, lng);
+      console.log('lat:', lat, 'lng:', lng);
       return axios.post('./api/toilet/location', {
           latitude: response.latitude,
           longitude: response.longitude,
@@ -33,7 +30,6 @@ export function search(endpoint) {
         });
       })
       .then ( (response) => {
-        console.log('response in search:', response);
         return function(dispatch) {
           dispatch({
             type: FETCH_TOILETZ,
@@ -77,7 +73,7 @@ export function convertAddress(address) {
 export function setSearchCenter(dispatch, lat, lng) {
   console.log('payload=', {latitude: lat, longitude: lng})
   dispatch( {
-    type: SEACH_CENTER,
+    type: SEARCH_CENTER,
     payload: {latitude: lat, longitude: lng}
   });
 }
@@ -127,10 +123,6 @@ export function createToilet(props,userId) {
   console.log('Inside createToilet...', props);
   return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + props.address + '&key=' + API_KEY)
 		.then(function(payload) {
-      console.log('payload from geocode:',payload);
-      console.log('payloads lat:', payload.data.results[0].geometry.location.lat);
-      console.log('payloads lng:', payload.data.results[0].geometry.location.lng);
-      console.log('payloads address:', payload.data.results[0].formatted_address);
 			let params = {
           name:props.name,
           description:props.description,

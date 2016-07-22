@@ -116,11 +116,11 @@ export default class SimpleMap extends Component{
 
     return (
         <Gmaps
-          width={'1200px'}
+          width={'100%'}
           height={'600px'}
           lat={this.props.origin.latitude}
           lng={this.props.origin.longitude}
-          zoom={13}
+          zoom={15}
           loadingMessage={'Loading...'}
           params={{v: '3.exp', key: 'AIzaSyB85KqmtnH-PdxoaFTRZRWZJLI6H48oa-Q'}}
           onMapCreated={this.onMapCreated}
