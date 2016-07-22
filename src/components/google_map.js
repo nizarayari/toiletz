@@ -116,7 +116,7 @@ export default class SimpleMap extends Component{
 
     return (
         <Gmaps
-          width={'1200px'}
+          width={'100%'}
           height={'600px'}
           lat={this.props.origin.latitude}
           lng={this.props.origin.longitude}
