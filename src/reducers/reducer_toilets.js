@@ -6,7 +6,5 @@ export default function(state=null,action){
 		console.log(action.payload.data,"inside switch")
 		return action.payload.data || action.payload
 	}
-	
 	return state
- 
 }
