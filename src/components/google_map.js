@@ -45,7 +45,7 @@ export default class SimpleMap extends Component{
 
   onClick(e) {
     let curr = this.state.current;
-    if (curr) {
+    if (curr !== null) {
       this.setState({ ['marker' + curr]: false, current: null });
     }
     this.props.selectToiletFromMap(this.props.toilets[e])
@@ -54,7 +54,7 @@ export default class SimpleMap extends Component{
         ['marker' + e]: true,
         current: e,
         currentAddress: data.payload.address
-      })
+      });
     })
     .catch( (err) => {
       console.log('error:', err);
@@ -93,7 +93,7 @@ export default class SimpleMap extends Component{
             key={index}
             lat={toilet.latitude}
             lng={toilet.longitude}
-            content={'<div class="infowindow"><img src="' + url + '" style="border:1px black solid"/><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div></div>' }
+            content={'<div class="infowindow"><img src="' + url + '" style="background-color:rgba(0,0,0,0)"/><p><span>' + toilet.name+'</span> -- '+toilet.description+' -- '+ toilet.address + '</p></div>' }
             onCloseClick={this.onCloseClick.bind(this, index)}
           />
         )

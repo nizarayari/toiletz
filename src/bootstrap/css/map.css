@@ -17,9 +17,23 @@
 .infowindow {
   width: 302px;
   margin:0;
-  margin-right:0px;
+  margin-left:23px;
+  margin-top:10px;
 }
 
 
 .infowindow img {
+  border: 1px solid rgba(210, 210, 210, 0.7);
+}
+
+.infowindow p {
+  background-color: rgba(210, 210, 210, 0.7);
+  color: #47B9B9;
+  margin: 5px 0 0;
+  padding: 0 2px;
+}
+
+.infowindow p span {
+  color: #FFFFFF;
+  font-weight:600;
 }
