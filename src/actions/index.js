@@ -124,16 +124,20 @@ export function getReviews (toiletId){
 
 
 export function createToilet(props,userId) {
- 	return convertAddress(props.address)
+  console.log('Inside createToilet...', props);
+  return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + props.address + '&key=' + API_KEY)
 		.then(function(payload) {
-
+      console.log('payload from geocode:',payload);
+      console.log('payloads lat:', payload.data.results[0].geometry.location.lat);
+      console.log('payloads lng:', payload.data.results[0].geometry.location.lng);
+      console.log('payloads address:', payload.data.results[0].formatted_address);
 			let params = {
-	            name:props.name,
-	            description:props.description,
-	            id_users: userId,
-	            latitude: payload.data.latitude,
-			    longitude: payload.data.longitude,
-			    address: payload.data.address,
+          name:props.name,
+          description:props.description,
+          id_users: userId,
+          latitude: payload.data.results[0].geometry.location.lat,
+			    longitude: payload.data.results[0].geometry.location.lng,
+			    address: payload.data.results[0].formatted_address,
 			    token: localStorage.getItem('token')
 			};
 

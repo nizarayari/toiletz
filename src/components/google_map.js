@@ -61,7 +61,6 @@ export default class SimpleMap extends Component{
     });
   }
 
-
   renderMarkers() {
     return this.props.toilets.map((toilet, index) => {
       return (
