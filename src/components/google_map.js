@@ -12,10 +12,12 @@ import {connect} from 'react-redux';
 const image = '../src/assets/toilet_icon.png';
 
 export default class SimpleMap extends Component{
-
   constructor(props) {
     super(props);
-    this.state = { hide: true, current: null, currentAddress: null };
+    this.state = { hide: true,
+                  current: null,
+                  currentAddress: null
+                };
   }
 
   onMapCreated(map) {
@@ -87,11 +89,11 @@ export default class SimpleMap extends Component{
         return (
           <InfoWindow
             style={{'border':'1px black solid'}}
-            className='testing'
+            className='testclass'
             key={index}
             lat={toilet.latitude}
             lng={toilet.longitude}
-            content={'<img src="' + url + '" style="border:1px black solid"/><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div>' }
+            content={'<div class="infowindow"><img src="' + url + '" style="border:1px black solid"/><div>' + toilet.name+' -- '+toilet.description+' -- '+toilet.address + '</div></div>' }
             onCloseClick={this.onCloseClick.bind(this, index)}
           />
         )
@@ -101,12 +103,9 @@ export default class SimpleMap extends Component{
 
 
   render() {
-    console.log('origin:', this.props.origin);
     if(!this.props.toilets){
       return null;
     }
-    let markers = this.renderMarkers();
-    let infoWindows = this.renderInfoWindows();
     if(typeof this.props.toilets === "string"){
       console.log("inside if")
       return (
@@ -127,8 +126,8 @@ export default class SimpleMap extends Component{
           params={{v: '3.exp', key: 'AIzaSyB85KqmtnH-PdxoaFTRZRWZJLI6H48oa-Q'}}
           onMapCreated={this.onMapCreated}
         >
-          {markers}
-          {infoWindows}
+          {this.renderMarkers()}
+          {this.renderInfoWindows()}
         </Gmaps>
     );
   }

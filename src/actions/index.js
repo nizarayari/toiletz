@@ -72,28 +72,7 @@ export function convertAddress(address) {
 			console.log(response, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
 		})
 }
-// export function convertAddress(address) {
-// 	return new Promise(function(resolve, reject) {
-// 	let response;
-// 	let coords;
-// 	resolve(axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + API_KEY)
-// 		.then(function(payload) {
-// 			//console.log(payload, "PAYLOAD (GOOGLE API) IN ACTIONS, CONVERTADDRESS");
-// 			response = payload.data.results[0].geometry.location;
-// 			coords = {
-// 				latitude: response.lat,
-// 			    longitude: response.lng,
-// 			    address: address
-// 			};
-// 			return {
-// 				data: coords
-// 			}
-// 		}))
-// 		.catch(function(response) {
-// 			console.log(response, "ERROR INSIDE ACTIONS, IN CONVERTADDRESS");
-// 		})
-// 	})
-// }
+
 
 export function setSearchCenter(dispatch, lat, lng) {
   console.log('payload=', {latitude: lat, longitude: lng})

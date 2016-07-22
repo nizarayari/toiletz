@@ -1,0 +1,25 @@
+/**************************************************/
+/******************* Map view *********************/
+/**************************************************/
+
+.gm-style-iw {
+  border: none !important;
+  background-color: rgba(200, 200, 200, 0) !important;
+}
+
+.gm-style > div > div > div > div,
+.gm-style > div > div > div > div > div > div[style*="border-radius"],
+.gm-style > div > div > div > div > div > div > div > div {
+  border: none !important;
+  background-color: rgba(210, 210, 210, 0.2) !important;
+}
+
+.infowindow {
+  width: 302px;
+  margin:0;
+  margin-right:0px;
+}
+
+
+.infowindow img {
+}
