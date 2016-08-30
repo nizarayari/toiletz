@@ -5,13 +5,12 @@ import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import axios from 'axios';
 import { selectToiletFromMap } from '../actions/index.js';
 import { bindActionCreators } from 'redux';
-import API_KEY from '../../keys.js';
 
 import {connect} from 'react-redux';
 
 const image = '../src/assets/toilet_icon.png';
 
-export default class SimpleMap extends Component{
+class SimpleMap extends Component{
   constructor(props) {
     super(props);
     this.state = { hide: true,
@@ -84,7 +83,7 @@ export default class SimpleMap extends Component{
       } else {
         let addy = toilet.address;
         let loc = `${toilet.latitude},${toilet.longitude}`;
-        let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${addy}&pitch=-0.90&key=${API_KEY.maps}`
+        let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${addy}&pitch=-0.90&key=AIzaSyAUpKh2acbg-j_j4aRr-DGjeF7NXwCK_J4`
         return (
           <InfoWindow
             style={{'border':'1px black solid'}}
