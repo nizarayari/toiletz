@@ -1,5 +1,5 @@
 var config = require('../../knexfile.js');
-var env = process.env.NODE_ENV || 'development';
+var env = 'development';
 var knex = require('knex')(config[env]);
 
 module.exports = knex;
@@ -33,7 +33,9 @@ knex.ensureSchema = function () {
         knex.schema.createTable('users', function (table) {
           table.increments('id').primary();
           table.string('username', 255);
+          table.string('password', 255);
           table.string('email', 255);
+          table.string('salt', 255);
           table.string('gender', 100);
           table.timestamps();
         }).then(function (table) {
@@ -46,7 +48,10 @@ knex.ensureSchema = function () {
       if (!exists) {
         knex.schema.createTable('toiletz', function (table) {
           table.increments('id').primary();
-          table.string('location', 255);
+          table.string('name', 255);
+          table.string('address', 255);
+          table.float('latitude', 8);
+          table.float('longitude', 8);
           table.text('description', 255);
           table.integer('id_Users').unsigned().references('id').inTable('users');
           table.timestamps();

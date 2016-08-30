@@ -1,0 +1,38 @@
+/**************************************************/
+/******************* Map view *********************/
+/**************************************************/
+
+.gm-style-iw {
+  border: none !important;
+  background-color: rgba(200, 200, 200, 0) !important;
+}
+
+.gm-style > div > div > div > div,
+.gm-style > div > div > div > div > div > div[style*="border-radius"],
+.gm-style > div > div > div > div > div > div > div > div {
+  border: none !important;
+  background-color: rgba(210, 210, 210, 0.2) !important;
+}
+
+.infowindow {
+  width: 302px;
+  margin:0;
+  margin-left:23px;
+  margin-top:10px;
+}
+
+.infowindow img {
+  border: 1px solid rgba(210, 210, 210, 0.7);
+}
+
+.infowindow p {
+  background-color: rgba(210, 210, 210, 0.7);
+  color: #47B9B9;
+  margin: 5px 0 0;
+  padding: 0 2px;
+}
+
+.infowindow p span {
+  color: #FFFFFF;
+  font-weight:600;
+}

@@ -1,4 +1,15 @@
-node_modules/
+/node_modules
+bundle.js
+npm-debug.log
 server/.DS_Store
-.env
+/src/env-google
+server/.env
 .config
+.env
+toiletz_key.pem
+
+# IntelliJ
+*.iml
+/.idea
+
+keys.js

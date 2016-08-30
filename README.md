@@ -1,6 +1,5 @@
 # Toiletz #
 
-**Test ariel**
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
 
@@ -18,28 +17,89 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Toiletz 
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Travelers, vacationers and bubble guts, Toiletz is a social-networking app that provides a list of accessible restrooms in an area.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > When you need to use the restroom the last thing you want to deal with is getting to one only to find that you need a key, or a code or, god forbid, that it has been visited by "one who eats Taco Bell". You just need to find relief. Toiletz is here to help you find that. Toiletz, it's yelp but for toilets!
 
 ## Problem ##
-  > Describe the problem your product solves.
+  >When out and about, especially in a new place, there is no way of knowing where a good and accessible bathroom is.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  >People who are in need of using a restroom can log in the Toiletz app to access the closest restroom.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  >"We all gotta go, when we gotta go. Toiletz, it's yelp but for toilets!""
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+> What follows are descriptions, sample usage and server outputs for each of the Toiletz API endpoints:
+
+**POST** /api/auth/signin
+>Performs authentication to see if the user exists in the database. If the user exists, login methods will continue. Otherwise, the user will be redirected to the signup page.
+>Server output: "Received POST at /api/auth/signin"
+
+**POST** /api/auth/signup
+>Creates a new user account.
+>Server output: "Received POST at /api/auth/signin"
+
+
+**POST** /api/review
+>Creates a review for a toilet.
+>Sample of review entry:
+    {
+      "descriptions": "Expect a long line",
+      "rating": 3,
+      "recommend": true,
+      "id_users": 15,
+      "id_Toiletz": 11,
+      "id": 21
+    }
+>Server output: "Received POST at /api/review"
+
+**GET** /api/review/toilet/:toiletId
+>Fetches all reviews for a specified toilet
+>Server output: [list of all reviews]
+
+**GET** /api/review/toilet/:toiletId
+>Fetches toilet review for a specified user
+>Server output: [list of all reviews]
+
+**GET** /api/:reviewId
+>Fetches a specified review
+>Server output: [list of all reviews]
+
+
+**GET** /api/tag
+>Fetches all available tag options on toilet.
+>Server output: "Received GET at /api/tag/"
+**POST** /api/tag
+>Creates new tag for a toilet
+
+**GET** /api/:tagId
+>Fetches a specified tag by ID
+>Server output: "Received GET at /api/:tagId"
+
+
+**GET** /api/toilet/
+>Fetches all available toilets
+>Server output: [sends response with a list of all toilets]
+**POST** /api/toilet/
+>Creates a new toilet entry.
+
+**POST** /api/toilet/location
+>Finds toilets in a radius.
+>Server output: [returns a list of toilets in radius]
+
+**GET** /api/toilet/:toiletId
+>Fetches a specified toilet by ID
+>Server output: [returns toilet if found]
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > Real User #4Realz, "I had just finished winning the road kill eat off and new I was in trouble when the first rumble came. Toiletz guided me to safety and relief. Thanks Toiletz!
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
