@@ -83,7 +83,7 @@ class SimpleMap extends Component{
       } else {
         let addy = toilet.address;
         let loc = `${toilet.latitude},${toilet.longitude}`;
-        let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${addy}&pitch=-0.90&key=AIzaSyAUpKh2acbg-j_j4aRr-DGjeF7NXwCK_J4`
+        let url = `https://maps.googleapis.com/maps/api/streetview?size=300x200&location=${addy}&pitch=-0.90`
         return (
           <InfoWindow
             style={{'border':'1px black solid'}}
